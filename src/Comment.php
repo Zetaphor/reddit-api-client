@@ -48,6 +48,14 @@ class Comment extends Entity {
 	private $replies = array();
 
 	/**
+	 * The comment's parent, if it has one
+	 * 
+	 * @access private
+	 * @var    \RedditApiClient\Comment
+	 */
+	private $parentComment;
+
+	/**
 	 * Returns the number of replies received by the comment
 	 * 
 	 * @access public
@@ -125,6 +133,17 @@ class Comment extends Entity {
 	}
 
 	/**
+	 * Returns the comment's parent
+	 * 
+	 * @access public
+	 * @return \RedditApiClient\Comment
+	 */
+	public function getParent()
+	{
+		return $this->parentComment;
+	}
+
+	/**
 	 * Overrides Entity's setData to process the replies and package them as
 	 * objects
 	 * 
@@ -140,11 +159,24 @@ class Comment extends Entity {
 
 				$comment = new self;
 				$comment->setData($reply['data']);
+				$comment->setParent($this);
+
 				$this->replies[] = $comment;
 
 			}
 		}
 
+	}
+
+	/**
+	 * Sets the comment's parent
+	 * 
+	 * @access public
+	 * @param  \RedditApiClient\Comment $parentComment 
+	 */
+	public function setParent($parentComment)
+	{
+		$this->parentComment = $parentComment;
 	}
 
 }

@@ -40,6 +40,25 @@ require_once 'Entity.php';
 class Comment extends Entity {
 
 	/**
+	 * An array of comments in reply to this one
+	 * 
+	 * @access private
+	 * @var    array
+	 */
+	private $replies = array();
+
+	/**
+	 * Returns the number of replies received by the comment
+	 * 
+	 * @access public
+	 * @return integer
+	 */
+	public function countReplies()
+	{
+		return count($this->replies);
+	}
+
+	/**
 	 * Returns the comment's unique ID
 	 * 
 	 * @access public
@@ -92,6 +111,40 @@ class Comment extends Entity {
 	public function getAuthorName()
 	{
 		return $this['author'];
+	}
+
+	/**
+	 * Returns an array of the replies to the comment
+	 * 
+	 * @access public
+	 * @return array
+	 */
+	public function getReplies()
+	{
+		return $this->replies;
+	}
+
+	/**
+	 * Overrides Entity's setData to process the replies and package them as
+	 * objects
+	 * 
+	 * @access public
+	 * @param  array $data 
+	 */
+	public function setData(array $data)
+	{
+		parent::setData($data);
+
+		if (isset($data['replies']['data']['children'])) {
+			foreach ($data['replies']['data']['children'] as $reply) {
+
+				$comment = new self;
+				$comment->setData($reply['data']);
+				$this->replies[] = $comment;
+
+			}
+		}
+
 	}
 
 }

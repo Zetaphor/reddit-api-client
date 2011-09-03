@@ -42,5 +42,30 @@ class CommentTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals('NO U', $this->comment->getBody());
 	}
 
+	public function testReplyHierarchy()
+	{
+		$this->comment->setData(array(
+			'replies' => array(
+				'data' => array(
+					'children' => array(
+						array('data' => array(
+							'id' => 123456,
+						)),
+						array('data' => array(
+							'id' => 123457,
+						)),
+					),
+				),
+			),
+		));
+
+		$this->assertEquals(2, $this->comment->countReplies());
+
+		$replies = $this->comment->getReplies();
+
+		$this->assertEquals(123456, $replies[0]->getId());
+		$this->assertEquals(123457, $replies[1]->getId());
+	}
+
 }
 

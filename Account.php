@@ -5,9 +5,9 @@ namespace RedditApiClient;
 require_once 'Entity.php';
 
 /**
- * User 
+ * Account 
  *
- * Encapsulates data about a Reddit user
+ * Encapsulates data about a Reddit account
  * 
  * "data": {
  *     "has_mail"      : false,
@@ -29,10 +29,10 @@ require_once 'Entity.php';
  * @package   Reddit API Client
  * @uses      \ArrayAccess
  */
-class User extends Entity {
+class Account extends Entity {
 
 	/**
-	 * Returns the user's unique ID
+	 * Returns the account's unique ID
 	 * 
 	 * @access public
 	 * @return string
@@ -54,7 +54,7 @@ class User extends Entity {
 	}
 
 	/**
-	 * Returns the user's comment karma
+	 * Returns the account's comment karma
 	 * 
 	 * @access public
 	 * @return integer
@@ -65,7 +65,7 @@ class User extends Entity {
 	}
 
 	/**
-	 * Returns the user's link karma
+	 * Returns the account's link karma
 	 * 
 	 * @access public
 	 * @return integer

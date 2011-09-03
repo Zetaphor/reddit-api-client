@@ -157,7 +157,7 @@ class Comment extends Entity {
 		if (isset($data['replies']['data']['children'])) {
 			foreach ($data['replies']['data']['children'] as $reply) {
 
-				$comment = new self;
+				$comment = new self($this->reddit);
 				$comment->setData($reply['data']);
 				$comment->setParent($this);
 

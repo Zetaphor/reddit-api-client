@@ -55,7 +55,9 @@ class HttpResponse {
 			if (strpos($header, "{$name}:") === 0) {
 				
 				$prefixLength = strlen("{$name}:") + 1;
+
 				$suffix = substr($header, $prefixLength);
+				$suffix = rtrim($suffix);
 
 				return $suffix;
 			}

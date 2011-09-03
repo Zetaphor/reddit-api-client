@@ -87,6 +87,15 @@ class Reddit {
 		return true;
 	}
 
+	/**
+	 * Sends a request to Reddit and returns the response received
+	 * 
+	 * @access public
+	 * @param  string $verb  'GET', 'POST', ...
+	 * @param  string $url   'http://www.reddit.com/comments/6nw57.json'
+	 * @param  string $body 
+	 * @return array
+	 */
 	public function getData($verb, $url, $body = '')
 	{
 		$request = new HttpRequest;

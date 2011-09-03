@@ -228,5 +228,33 @@ class Link extends Entity {
 		$this->comments = $comments;
 	}
 
+	/**
+	 * Casts a vote on the link
+	 * 
+	 * @access public
+	 * @param  integer $direction  1 for an upvote, -1 for down, 0 to remove votes
+	 * @return boolean
+	 */
+	public function vote($direction)
+	{
+		$thingId = $this->getThingId();
+
+		return $this->reddit->vote($thingId, $direction);
+	}
+
+	/**
+	 * Posts a comment on the link
+	 * 
+	 * @access public
+	 * @param  string $text 
+	 * @return boolean
+	 */
+	public function reply($text)
+	{
+		$thingId = $this->getThingId();
+
+		return $this->reddit->comment($thingId, $text);
+	}
+
 }
 

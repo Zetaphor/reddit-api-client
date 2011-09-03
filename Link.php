@@ -282,5 +282,31 @@ class Link extends Entity {
 		return $this->reddit->unsave($thingId);
 	}
 
+	/**
+	 * Hides the link
+	 * 
+	 * @access public
+	 * @return boolean
+	 */
+	public function hide()
+	{
+		$thingId = $this->getThingId();
+
+		return $this->reddit->hide($thingId);
+	}
+
+	/**
+	 * Unhides the link
+	 * 
+	 * @access public
+	 * @return boolean
+	 */
+	public function unhide()
+	{
+		$thingId = $this->getThingId();
+
+		return $this->reddit->unhide($thingId);
+	}
+
 }
 

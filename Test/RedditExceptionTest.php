@@ -139,5 +139,43 @@ class RedditExceptionTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(RedditException::LOGIN_REQUIRED, $code);
 	}
 
+	/**
+	 * Tests to make sure that LOGIN_REQUIRED exceptions are thrown if attempting
+	 * to hide posts when not logged in
+	 */
+	public function testExceptionIfHidingPostWhileNotLoggedIn()
+	{
+		$code = null;
+
+		$reddit = new Stub_RedditNoRequests;
+
+		try {
+			$reddit->hide('asaas');
+		} catch (RedditException $e) {
+			$code = $e->getCode();
+		}
+
+		$this->assertEquals(RedditException::LOGIN_REQUIRED, $code);
+	}
+
+	/**
+	 * Tests to make sure that LOGIN_REQUIRED exceptions are thrown if attempting
+	 * to unhide posts when not logged in
+	 */
+	public function testExceptionIfUnhdingPostWhileNotLoggedIn()
+	{
+		$code = null;
+
+		$reddit = new Stub_RedditNoRequests;
+
+		try {
+			$reddit->unhide('asaas');
+		} catch (RedditException $e) {
+			$code = $e->getCode();
+		}
+
+		$this->assertEquals(RedditException::LOGIN_REQUIRED, $code);
+	}
+
 }
 

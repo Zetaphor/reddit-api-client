@@ -390,6 +390,68 @@ class Reddit {
 		}
 	}
 
+	/**
+	 * Hides a link
+	 * 
+	 * @access public
+	 * @param  string $thingId 
+	 * @return boolean
+	 */
+	public function hide($thingId)
+	{
+		if (!$this->isLoggedIn()) {
+			$message = 'Cannot hide posts without being logged in';
+			$code    = RedditException::LOGIN_REQUIRED;
+			throw new RedditException($message, $code);
+		}
+
+		$verb = 'POST';
+		$url  = 'http://www.reddit.com/api/hide';
+		$data = array(
+			'id' => $thingId,
+			'uh' => $this->modHash,
+		);
+
+		$response = $this->getData($verb, $url, $data);
+
+		if (empty($response)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Unhides a link
+	 * 
+	 * @access public
+	 * @param  string $thingId 
+	 * @return boolean
+	 */
+	public function unhide($thingId)
+	{
+		if (!$this->isLoggedIn()) {
+			$message = 'Cannot hide posts without being logged in';
+			$code    = RedditException::LOGIN_REQUIRED;
+			throw new RedditException($message, $code);
+		}
+
+		$verb = 'POST';
+		$url  = 'http://www.reddit.com/api/unhide';
+		$data = array(
+			'id' => $thingId,
+			'uh' => $this->modHash,
+		);
+
+		$response = $this->getData($verb, $url, $data);
+
+		if (empty($response)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 
 }
 

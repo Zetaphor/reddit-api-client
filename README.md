@@ -33,3 +33,35 @@ And this is its output:
     （╯°□°）╯︵ ┻━┻ （╯°□°）╯︵ ┻━┻ FREE KARMA.
 
 
+Installation
+------------
+
+I haven't packaged this up in any way whatsoever yet. If you want to use it,
+just download the code and require_once Reddit.php
+
+The code has all been written on a MacBook using PHP 5.3.6. It should work fine
+on other operating systems but I'm using namespaces so anything less than 5.3
+is no good.
+
+I've been burned too many times writing code that relied on the prescence of
+either cURL or pecl_http, only to find out that they weren't available and
+never would be in the production environment. This library has its own
+little implementations of HttpRequest and HttpResponse to save you from the
+usual "Hey this API client looks like it might work oh wait it depends on cURL
+never mind" bullshit.
+
+
+Development Status
+------------------
+
+As of 2011-09-03 this project is less than 24 hours old. I was looking at
+Reddit's API documentation last night and realised I couldn't find a PHP
+client for it.
+
+I've unit-tested as much as I could be bothered too and for the most part this
+is pretty robust code. The parts that are actually implemented are probably
+safe for production use, the main reason not to at the moment is the sheer
+lack of missing functionality.
+
+Pull requests are welcome by the way!
+

@@ -237,5 +237,33 @@ class Reddit {
 		}
 	}
 
+	/**
+	 * Returns an array of the posts in a subreddit
+	 * 
+	 * @access public
+	 * @param  string $subredditName  Plain-text name
+	 * @return array
+	 */
+	public function getPostsBySubreddit($subredditName)
+	{
+		$verb = 'GET';
+		$url  = "http://www.reddit.com/r/{$subredditName}.json";
+
+		$response = $this->getData($verb, $url);
+
+		$posts = array();
+
+		foreach ($response['data']['children'] as $child) {
+
+			$post = new Post($this);
+			$post->setData($child['data']);
+
+			$posts[] = $post;
+			
+		}
+
+		return $posts;
+	}
+
 }
 

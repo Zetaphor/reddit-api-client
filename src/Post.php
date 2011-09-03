@@ -2,7 +2,7 @@
 
 namespace RedditApiClient;
 
-require_once 'RedditEntity.php';
+require_once 'Entity.php';
 
 /**
  * Post 
@@ -54,7 +54,7 @@ require_once 'RedditEntity.php';
  * @package   Reddit API Client
  * @version   0.00
  */
-class Post extends RedditEntity {
+class Post extends Entity {
 
 	/**
 	 * Returns the unique ID of the post

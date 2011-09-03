@@ -1,14 +1,14 @@
 <?php
 
-require_once '../src/RedditEntity.php';
-require_once 'Fake/RedditEntity.php';
+require_once '../src/Entity.php';
+require_once 'Fake/Entity.php';
 require_once 'PHPUnit/Framework/TestCase.php';
 
 use \PHPUnit_Framework_TestCase;
-use \RedditApiClient\RedditEntity;
+use \RedditApiClient\Entity;
 
 /**
- * RedditEntityTest 
+ * EntityTest 
  *
  * Tests the underling functionality that powers the base class for modeling
  * the entities exposed by the API
@@ -19,14 +19,14 @@ use \RedditApiClient\RedditEntity;
  * @package   Reddit API Client
  * @version   0.00
  */
-class RedditEntityTest extends PHPUnit_Framework_TestCase {
+class EntityTest extends PHPUnit_Framework_TestCase {
 
 	/**
 	 * Just checks the ArrayAccess implementation 
 	 */
 	public function testArrayAccess()
 	{
-		$entity = new Fake_RedditEntity;
+		$entity = new Fake_Entity;
 		$entity->setData(array('y' => 2));
 
 		$this->assertTrue(isset($entity['y']));

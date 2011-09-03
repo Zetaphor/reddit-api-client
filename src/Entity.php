@@ -5,7 +5,7 @@ namespace RedditApiClient;
 use \ArrayAccess;
 
 /**
- * RedditEntity 
+ * Entity 
  *
  * Base-class for modeling entities exposed by the API
  *
@@ -16,7 +16,7 @@ use \ArrayAccess;
  * @uses      \ArrayAccess
  * @version   0.00
  */
-abstract class RedditEntity implements ArrayAccess {
+abstract class Entity implements ArrayAccess {
 
 	/**
 	 * An associative array of the raw API data that represents the entity

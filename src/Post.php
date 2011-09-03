@@ -57,6 +57,14 @@ require_once 'Entity.php';
 class Post extends Entity {
 
 	/**
+	 * An array of the comments in reply to the post
+	 * 
+	 * @access private
+	 * @var    array
+	 */
+	private $comments = array();
+
+	/**
 	 * Returns the unique ID of the post
 	 * 
 	 * @access public
@@ -161,6 +169,17 @@ class Post extends Entity {
 	}
 
 	/**
+	 * Returns the array of comments in reply to the post
+	 * 
+	 * @access public
+	 * @return array
+	 */
+	public function getComments()
+	{
+		return $this->comments;
+	}
+
+	/**
 	 * Indicates whether the post is a self-post or not
 	 * 
 	 * @access public
@@ -173,6 +192,17 @@ class Post extends Entity {
 		} else {
 			return false;
 		}
+	}
+
+	/**
+	 * Stores the given array of comments
+	 * 
+	 * @access public
+	 * @param  array $comments 
+	 */
+	public function setComments(array $comments)
+	{
+		$this->comments = $comments;
 	}
 
 }

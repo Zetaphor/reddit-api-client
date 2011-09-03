@@ -5,6 +5,8 @@ namespace RedditApiClient;
 require_once 'HttpRequest.php';
 require_once 'HttpResponse.php';
 require_once 'RedditException.php';
+require_once 'Post.php';
+require_once 'Comment.php';
 
 /**
  * Reddit 
@@ -73,10 +75,9 @@ class Reddit {
 		$request->setPostVariable('passwd', $password);
 
 		$response = $request->getResponse();
-
 		$setCookie = $response->getHeader('Set-Cookie');
 
-		if (!preg_match('/reddit_session=([^;]+);', $setCookie, $matches)) {
+		if (!preg_match('/reddit_session=([^;]+);/', $setCookie, $matches)) {
 			return false;
 		}
 
@@ -113,6 +114,11 @@ class Reddit {
 		}
 
 		$response = $request->getResponse();
+
+		if (!($response instanceof HttpResponse)) {
+			return null;
+		}
+
 		$responseBody = $response->getBody();
 		$response = json_decode($responseBody, true);
 
@@ -123,7 +129,101 @@ class Reddit {
 		return $response;
 	}
 
+	/**
+	 * Fetches and returns the post with the given ID
+	 * 
+	 * @access public
+	 * @param  string $postId 
+	 * @return \RedditApiClient\Post
+	 */
+	public function getPost($postId)
+	{
+		$verb = 'GET';
+		$url  = "http://www.reddit.com/r/programming/comments/{$postId}.json";
 
+		$response = $this->getData($verb, $url);
+
+		$post = null;
+
+		if (isset($response[0]['data']['children'][0]['data'])) {
+			
+			$post = new Post($this);
+			$post->setData($response[0]['data']['children'][0]['data']);
+
+		}
+
+		$comments = array();
+
+		if (isset($response[1]['data']['children'])) {
+
+			foreach ($response[1]['data']['children'] as $data) {
+
+				$comment = new Comment($this);
+				$comment->setData($data['data']);
+
+				if (isset($comment['author'])) {
+					$comments[] = $comment;
+				}
+			}
+		}
+
+		if ($post instanceof Post) {
+			$post->setComments($comments);
+		}
+
+		return $post;
+
+	}
+
+	/*
+	public function getComment($commentId)
+	{
+		$verb = 'GET';
+		$url  = "http://www.reddit.com/comments/{$commentId}.json";
+
+		$response = $this->getData($verb, $url);
+
+		if (!isset($response[0]['data'])) {
+			return null;
+		}
+
+		$comment = new Comment($this);
+		$comment->setData($response[0]['data']);
+
+		return $comment;
+	}
+
+	public function postComment($parentId, $text)
+	{
+		$verb = 'POST';
+		$url  = 'http://www.reddit.com/api/comment';
+		$data = array(
+			'thing_id' => $parentId,
+			'text'     => $text,
+			'uh'       => $this->modHash,
+		);
+
+		$response = $this->getData($verb, $url, $data);
+
+		var_dump($response);
+	}
+
+	public function vote($thingId, $direction)
+	{
+		$verb = 'POST';
+		$url  = 'http://www.reddit.com/api/vote';
+		$data = array(
+			'thing_id' => $thingId,
+			'dir'      => $direction,
+			'uh'       => $this->modHash,
+		); 
+
+		$response = $this->getData($verb, $url, $data);
+
+		var_dump($response);
+		var_dump($this->modHash);
+	}
+	*/
 
 }
 

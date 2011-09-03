@@ -175,6 +175,10 @@ class HttpRequest {
 		$stream = stream_context_create($parameters);
 		$handle = @fopen($this->url, 'rb', false, $stream);
 
+		if (!is_resource($handle)) {
+			return null;
+		}
+
 		$streamMetaData = stream_get_meta_data($handle);
 		$streamContents = stream_get_contents($handle);
 

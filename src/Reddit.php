@@ -29,6 +29,18 @@ class Reddit {
 	private $sessionCookie;
 
 	/**
+	 * Stores the last seen modhash value
+	 *
+	 * The modhash is an anti-XSRF measure. It's a value returned with each
+	 * set of data, different each time, that must be passed along with the
+	 * next request.
+	 * 
+	 * @access private
+	 * @var    string
+	 */
+	private $modHash;
+
+	/**
 	 * Creates the API client instance
 	 *
 	 * If given a username and password, will attempt to login.
@@ -74,6 +86,35 @@ class Reddit {
 
 		return true;
 	}
+
+	public function getData($verb, $url, $body = '')
+	{
+		$request = new HttpRequest;
+		$request->setUrl($url);
+		$request->setHttpMethod($verb);
+
+		if ($verb === 'POST' && is_array($body)) {
+			foreach ($body as $name => $value) {
+				$request->setPostVariable($name, $value);
+			}
+		}
+
+		if ($this->sessionCookie !== null) {
+			$request->setCookie('reddit_session', $this->sessionCookie);
+		}
+
+		$response = $request->getResponse();
+		$responseBody = $response->getBody();
+		$response = json_decode($responseBody, true);
+
+		if (isset($response['data']['modhash'])) {
+			$this->modHash = $response['data']['modhash'];
+		}
+
+		return $response;
+	}
+
+
 
 }
 

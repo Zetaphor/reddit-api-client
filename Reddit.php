@@ -327,5 +327,38 @@ class Reddit {
 		return $subreddits;
 	}
 
+	/**
+	 * Saves a link
+	 * 
+	 * @access public
+	 * @param  string $thingId 
+	 * @return boolean
+	 */
+	public function save($thingId)
+	{
+		if (!$this->isLoggedIn()) {
+			$message = 'Cannot save posts without being logged in';
+			$code    = RedditException::LOGIN_REQUIRED;
+			throw new RedditException($message, $code);
+		}
+
+		$verb = 'POST';
+		$url  = 'http://www.reddit.com/api/save';
+		$data = array(
+			'id' => $thingId,
+			'uh' => $this->modHash,
+		);
+
+		$response = $this->getData($verb, $url, $data);
+
+		if (empty($response)) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+
+
 }
 

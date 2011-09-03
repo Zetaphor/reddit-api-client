@@ -256,5 +256,18 @@ class Link extends Entity {
 		return $this->reddit->comment($thingId, $text);
 	}
 
+	/**
+	 * Saves the link
+	 * 
+	 * @access public
+	 * @return boolean
+	 */
+	public function save()
+	{
+		$thingId = $this->getThingId();
+
+		return $this->reddit->save($thingId);
+	}
+
 }
 

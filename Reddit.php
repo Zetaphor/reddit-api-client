@@ -265,5 +265,20 @@ class Reddit {
 		return $link;
 	}
 
+	/**
+	 * Indicates whether the client is logged in as a Reddit user
+	 * 
+	 * @access public
+	 * @return boolean
+	 */
+	public function isLoggedIn()
+	{
+		if ($this->sessionCookie === null) {
+			return false;
+		}
+
+		return true;
+	}
+
 }
 

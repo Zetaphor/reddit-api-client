@@ -2,7 +2,7 @@
 
 namespace RedditApiClient\Test;
 
-require_once '../src/Subreddit.php';
+require_once '../Subreddit.php';
 require_once 'PHPUnit/Framework/TestCase.php';
 
 use \PHPUnit_Framework_TestCase;

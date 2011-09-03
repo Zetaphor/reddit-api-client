@@ -3,8 +3,8 @@
 namespace RedditApiClient\Test;
 
 require_once 'PHPUnit/Framework/TestCase.php';
-require_once '../src/Reddit.php';
-require_once '../src/RedditException.php';
+require_once '../Reddit.php';
+require_once '../RedditException.php';
 require_once 'Stub/RedditLoginRefuser.php';
 
 use \RedditApiClient\Reddit;

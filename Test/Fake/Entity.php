@@ -2,7 +2,7 @@
 
 namespace RedditApiClient\Test;
 
-require_once '../src/Entity.php';
+require_once '../Entity.php';
 
 use \RedditApiClient\Entity;
 

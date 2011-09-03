@@ -2,7 +2,7 @@
 
 namespace RedditApiClient\Test;
 
-require_once '../src/Reddit.php';
+require_once '../Reddit.php';
 
 use \RedditApiClient\Reddit;
 

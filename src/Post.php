@@ -176,6 +176,7 @@ class Post extends Entity {
 	 */
 	public function getComments()
 	{
+		// TODO: go back and fetch comments if post was originally fetched without
 		return $this->comments;
 	}
 

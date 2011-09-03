@@ -5,7 +5,7 @@ namespace RedditApiClient;
 require_once 'HttpRequest.php';
 require_once 'HttpResponse.php';
 require_once 'RedditException.php';
-require_once 'Post.php';
+require_once 'Link.php';
 require_once 'Comment.php';
 
 /**
@@ -132,35 +132,35 @@ class Reddit {
 	}
 
 	/**
-	 * Fetches and returns the post with the given ID
+	 * Fetches and returns the link with the given ID
 	 * 
 	 * @access public
-	 * @param  string $postId 
-	 * @return \RedditApiClient\Post
+	 * @param  string $linkId 
+	 * @return \RedditApiClient\Link
 	 */
-	public function getPost($postId, $withComments = false)
+	public function getLink($linkId, $withComments = false)
 	{
 		$verb = 'GET';
 
 		if ($withComments) {
-			$url = "http://www.reddit.com/comments/{$postId}.json";
+			$url = "http://www.reddit.com/comments/{$linkId}.json";
 		} else {
-			$url = "http://www.reddit.com/by_id/t3_{$postId}.json";
+			$url = "http://www.reddit.com/by_id/t3_{$linkId}.json";
 		}
 
 		$response = $this->getData($verb, $url);
 
-		$post = null;
+		$link = null;
 
 		if (!$withComments && isset($response['data']['children'][0])) {
 
-			$post = new Post($this);
-			$post->setData($response['data']['children'][0]['data']);
+			$link = new Link($this);
+			$link->setData($response['data']['children'][0]['data']);
 
 		} elseif ($withComments && isset($response[0]['data']['children'][0]['data'])) {
 			
-			$post = new Post($this);
-			$post->setData($response[0]['data']['children'][0]['data']);
+			$link = new Link($this);
+			$link->setData($response[0]['data']['children'][0]['data']);
 
 		}
 
@@ -179,11 +179,11 @@ class Reddit {
 			}
 		}
 
-		if (($post instanceof Post) && $withComments) {
-			$post->setComments($comments);
+		if (($link instanceof Link) && $withComments) {
+			$link->setComments($comments);
 		}
 
-		return $post;
+		return $link;
 
 	}
 
@@ -238,31 +238,31 @@ class Reddit {
 	}
 
 	/**
-	 * Returns an array of the posts in a subreddit
+	 * Returns an array of the links in a subreddit
 	 * 
 	 * @access public
 	 * @param  string $subredditName  Plain-text name
 	 * @return array
 	 */
-	public function getPostsBySubreddit($subredditName)
+	public function getLinksBySubreddit($subredditName)
 	{
 		$verb = 'GET';
 		$url  = "http://www.reddit.com/r/{$subredditName}.json";
 
 		$response = $this->getData($verb, $url);
 
-		$posts = array();
+		$links = array();
 
 		foreach ($response['data']['children'] as $child) {
 
-			$post = new Post($this);
-			$post->setData($child['data']);
+			$link = new Link($this);
+			$link->setData($child['data']);
 
-			$posts[] = $post;
+			$links[] = $link;
 			
 		}
 
-		return $posts;
+		return $link;
 	}
 
 }

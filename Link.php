@@ -5,11 +5,11 @@ namespace RedditApiClient;
 require_once 'Entity.php';
 
 /**
- * Post 
+ * Link 
  *
  * Represents a reddit post or submission
  *
- * The following is an example of the sort of data posts contain:
+ * The following is an example of the sort of data links contain:
  * 
  * [data] => Array
  * (
@@ -54,10 +54,10 @@ require_once 'Entity.php';
  * @package   Reddit API Client
  * @version   0.00
  */
-class Post extends Entity {
+class Link extends Entity {
 
 	/**
-	 * An array of the comments in reply to the post
+	 * An array of the comments in reply to the link
 	 * 
 	 * @access private
 	 * @var    array
@@ -65,7 +65,7 @@ class Post extends Entity {
 	private $comments = null;
 
 	/**
-	 * Returns the post's unique 't3_*' ID
+	 * Returns the link's unique 't3_*' ID
 	 * 
 	 * @access public
 	 * @return string
@@ -76,7 +76,7 @@ class Post extends Entity {
 	}
 
 	/**
-	 * Returns the unique ID of the post
+	 * Returns the unique ID of the link
 	 * 
 	 * @access public
 	 * @return string
@@ -87,7 +87,7 @@ class Post extends Entity {
 	}
 
 	/**
-	 * Returns the number of upvotes received by the post
+	 * Returns the number of upvotes received by the link
 	 * 
 	 * @access public
 	 * @return integer
@@ -98,7 +98,7 @@ class Post extends Entity {
 	}
 
 	/**
-	 * Returns the number of downvotes received by the post
+	 * Returns the number of downvotes received by the link
 	 * 
 	 * @access public
 	 * @return integer
@@ -109,7 +109,7 @@ class Post extends Entity {
 	}
 
 	/**
-	 * Returns the score of the post
+	 * Returns the score of the link
 	 * 
 	 * Score is a function of upvotes, downvotes, and time since creation
 	 * 
@@ -122,7 +122,7 @@ class Post extends Entity {
 	}
 
 	/**
-	 * Returns the number of comments made about the post
+	 * Returns the number of comments made about the link
 	 * 
 	 * @access public
 	 * @return integer
@@ -133,7 +133,7 @@ class Post extends Entity {
 	}
 
 	/**
-	 * Returns the username of the user who submitted the post
+	 * Returns the username of the user who submitted the link
 	 * 
 	 * @access public
 	 * @return string
@@ -144,7 +144,7 @@ class Post extends Entity {
 	}
 
 	/**
-	 * Returns the title of the post
+	 * Returns the title of the link
 	 * 
 	 * @access public
 	 * @return string
@@ -155,9 +155,9 @@ class Post extends Entity {
 	}
 
 	/**
-	 * Returns the URL of the post
+	 * Returns the URL of the link
 	 *
-	 * If the post is a self-post, the URL will contain the text body of the post
+	 * If the link is a self-post, the URL will contain the text body of the post
 	 * instead.
 	 * 
 	 * @access public
@@ -180,7 +180,7 @@ class Post extends Entity {
 	}
 
 	/**
-	 * Returns the array of comments in reply to the post
+	 * Returns the array of comments in reply to the link
 	 * 
 	 * @access public
 	 * @return array
@@ -191,11 +191,11 @@ class Post extends Entity {
 
 			$this->comments = array();
 
-			$postId = $this->getId();
+			$linkId = $this->getId();
 
-			$post = $this->reddit->getPost($postId, true);
+			$link = $this->reddit->getLink($linkId, true);
 
-			$this->comments = $post->getComments();
+			$this->comments = $link->getComments();
 
 		}
 
@@ -203,7 +203,7 @@ class Post extends Entity {
 	}
 
 	/**
-	 * Indicates whether the post is a self-post or not
+	 * Indicates whether the link is a self-post or not
 	 * 
 	 * @access public
 	 * @return boolean

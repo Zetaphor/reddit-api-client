@@ -8,14 +8,14 @@ As a quick taster, here's some sample code:
 
     <?php
     
-    require_once 'Reddit/src/Reddit.php';
+    require_once 'RedditApiClient/Reddit.php';
     use \RedditApiClient\Reddit;
     
     $reddit = new Reddit;
-    $posts  = $reddit->getPostsBySubreddit('botcirclejerk');
+    $links  = $reddit->getLinksBySubreddit('botcirclejerk');
     
-    foreach ($posts as $post) {
-        echo $post->getTitle(), "\n";
+    foreach ($links as $link) {
+        echo $link->getTitle(), "\n";
     }
 
 And this is its output:

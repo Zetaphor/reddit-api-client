@@ -275,7 +275,7 @@ class Reddit {
 			
 		}
 
-		return $link;
+		return $links;
 	}
 
 	/**

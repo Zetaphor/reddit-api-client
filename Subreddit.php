@@ -94,5 +94,20 @@ class Subreddit extends Entity {
 		return isset($this['over18']) ? $this['over18'] : false;
 	}
 
+	/**
+	 * Fetches and returns an array of the top links in the subreddit
+	 * 
+	 * @access public
+	 * @return array
+	 */
+	public function getLinks()
+	{
+		$displayName = $this->getDisplayName();
+
+		$links = $this->reddit->getLinksBySubreddit($displayName);
+
+		return $links;
+	}
+
 }
 

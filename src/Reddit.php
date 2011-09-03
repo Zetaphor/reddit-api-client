@@ -176,23 +176,6 @@ class Reddit {
 	}
 
 	/*
-	public function getComment($commentId)
-	{
-		$verb = 'GET';
-		$url  = "http://www.reddit.com/comments/{$commentId}.json";
-
-		$response = $this->getData($verb, $url);
-
-		if (!isset($response[0]['data'])) {
-			return null;
-		}
-
-		$comment = new Comment($this);
-		$comment->setData($response[0]['data']);
-
-		return $comment;
-	}
-
 	public function postComment($parentId, $text)
 	{
 		$verb = 'POST';

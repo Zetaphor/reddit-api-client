@@ -62,7 +62,18 @@ class Post extends Entity {
 	 * @access private
 	 * @var    array
 	 */
-	private $comments = array();
+	private $comments = null;
+
+	/**
+	 * Returns the post's unique 't3_*' ID
+	 * 
+	 * @access public
+	 * @return string
+	 */
+	public function getThingId()
+	{
+		return $this['name'];
+	}
 
 	/**
 	 * Returns the unique ID of the post
@@ -176,7 +187,18 @@ class Post extends Entity {
 	 */
 	public function getComments()
 	{
-		// TODO: go back and fetch comments if post was originally fetched without
+		if (!is_array($this->comments)) {
+
+			$this->comments = array();
+
+			$postId = $this->getId();
+
+			$post = $this->reddit->getPost($postId, true);
+
+			$this->comments = $post->getComments();
+
+		}
+
 		return $this->comments;
 	}
 

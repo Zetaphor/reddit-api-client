@@ -7,6 +7,7 @@ require_once 'HttpResponse.php';
 require_once 'RedditException.php';
 require_once 'Link.php';
 require_once 'Comment.php';
+require_once 'Subreddit.php';
 
 /**
  * Reddit 
@@ -290,6 +291,40 @@ class Reddit {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Fetches and returns an array of the subreddits to which the logged-in user
+	 * is subscribed
+	 * 
+	 * @access public
+	 * @return array
+	 */
+	public function getMySubreddits()
+	{
+		if (!$this->isLoggedIn()) {
+			$message = 'No user is logged in to list subreddit subscriptions';
+			$code    = RedditException::LOGIN_REQUIRED;
+			throw new RedditException($message, $code);
+		}
+
+		$verb = 'GET';
+		$url  = 'http://www.reddit.com/reddits/mine.json';
+
+		$response = $this->getData($verb, $url);
+
+		$subreddits = array();
+
+		foreach ($response['data']['children'] as $child) {
+
+			$subreddit = new Subreddit($this);
+			$subreddit->setData($child['data']);
+
+			$subreddits[] = $subreddit;
+
+		}
+
+		return $subreddits;
 	}
 
 }

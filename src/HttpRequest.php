@@ -2,6 +2,8 @@
 
 namespace RedditApiClient;
 
+require_once 'HttpResponse.php';
+
 /**
  * HttpRequest 
  *

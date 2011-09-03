@@ -2,6 +2,10 @@
 
 namespace RedditApiClient;
 
+require_once 'HttpRequest.php';
+require_once 'HttpResponse.php';
+require_once 'RedditException.php';
+
 /**
  * Reddit 
  *

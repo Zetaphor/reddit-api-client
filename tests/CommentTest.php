@@ -1,0 +1,46 @@
+<?php
+
+require_once '../src/Comment.php';
+require_once 'PHPUnit/Framework/TestCase.php';
+
+use \PHPUnit_Framework_TestCase;
+use \RedditApiClient\Comment;
+
+/**
+ * CommentTest 
+ * 
+ * @author    Henry Smith <henry@henrysmith.org> 
+ * @copyright 2011 Henry Smith
+ * @license   GPLv2.0
+ * @package   Reddit API Client
+ * @version   0.00
+ */
+class CommentTest extends PHPUnit_Framework_TestCase {
+
+	private $comment;
+
+	public function setUp()
+	{
+		$this->comment = new Comment;
+	}
+
+	public function testGetters()
+	{
+		$this->comment->setData(array(
+			'id' => 'aqwerty',
+			'ups' => 10,
+			'downs' => 3,
+			'author' => 'someuser',
+			'body' => 'NO U',
+
+		));
+
+		$this->assertEquals('aqwerty', $this->comment->getId());
+		$this->assertEquals('10', $this->comment->getUpvotes());
+		$this->assertEquals('3', $this->comment->getDownvotes());
+		$this->assertEquals('someuser', $this->comment->getAuthorName());
+		$this->assertEquals('NO U', $this->comment->getBody());
+	}
+
+}
+

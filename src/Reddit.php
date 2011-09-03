@@ -136,16 +136,26 @@ class Reddit {
 	 * @param  string $postId 
 	 * @return \RedditApiClient\Post
 	 */
-	public function getPost($postId)
+	public function getPost($postId, $withComments = false)
 	{
 		$verb = 'GET';
-		$url  = "http://www.reddit.com/r/programming/comments/{$postId}.json";
+
+		if ($withComments) {
+			$url = "http://www.reddit.com/comments/{$postId}.json";
+		} else {
+			$url = "http://www.reddit.com/by_id/t3_{$postId}.json";
+		}
 
 		$response = $this->getData($verb, $url);
 
 		$post = null;
 
-		if (isset($response[0]['data']['children'][0]['data'])) {
+		if (!$withComments && isset($response['data']['children'][0])) {
+
+			$post = new Post($this);
+			$post->setData($response['data']['children'][0]['data']);
+
+		} elseif ($withComments && isset($response[0]['data']['children'][0]['data'])) {
 			
 			$post = new Post($this);
 			$post->setData($response[0]['data']['children'][0]['data']);

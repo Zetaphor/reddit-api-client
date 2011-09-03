@@ -187,7 +187,14 @@ class Reddit {
 
 	}
 
-	/*
+	/**
+	 * Posts a comment in reply to a link or comment
+	 * 
+	 * @access public
+	 * @param  string $parentId 
+	 * @param  string $text 
+	 * @return boolean
+	 */
 	public function postComment($parentId, $text)
 	{
 		$verb = 'POST';
@@ -200,9 +207,8 @@ class Reddit {
 
 		$response = $this->getData($verb, $url, $data);
 
-		var_dump($response);
+		return true;
 	}
-	*/
 
 	/**
 	 * Casts a vote for a comment or link

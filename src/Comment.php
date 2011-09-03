@@ -204,5 +204,19 @@ class Comment extends Entity {
 		return $this->reddit->vote($thingId, $direction);
 	}
 
+	/**
+	 * Posts a reply to the comment
+	 * 
+	 * @access public
+	 * @param  string $text 
+	 * @return boolean
+	 */
+	public function reply($text)
+	{
+		$thingId = $this->getThingId();
+
+		return $this->reddit->postComment($thingId, $text);
+	}
+
 }
 

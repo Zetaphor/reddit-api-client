@@ -82,5 +82,26 @@ class RedditExceptionTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(RedditException::LOGIN_REQUIRED, $code);
 	}
 
+	/**
+	 * Tests to make sure that LOGIN_REQUIRED exceptions are thrown if attempting
+	 * to list subscribed subreddits when not logged in
+	 */
+	public function testExceptionIfListingSubscriptionsWhileNotLoggedIn()
+	{
+		$code = null;
+
+		$reddit = new Stub_RedditNoRequests;
+
+		try {
+			$reddit->getMySubreddits();
+		} catch (RedditException $e) {
+			$code = $e->getCode();
+		}
+
+		$this->assertEquals(RedditException::LOGIN_REQUIRED, $code);
+	}
+
+
+
 }
 

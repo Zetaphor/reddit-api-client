@@ -119,6 +119,5 @@ class User extends Entity {
 		return isset($this['has_mod_mail']) ? $this['has_mod_mail'] : false;
 	}
 
-
 }
 

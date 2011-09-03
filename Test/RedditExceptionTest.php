@@ -120,5 +120,24 @@ class RedditExceptionTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(RedditException::LOGIN_REQUIRED, $code);
 	}
 
+	/**
+	 * Tests to make sure that LOGIN_REQUIRED exceptions are thrown if attempting
+	 * to unsave posts when not logged in
+	 */
+	public function testExceptionIfUnsavingPostWhileNotLoggedIn()
+	{
+		$code = null;
+
+		$reddit = new Stub_RedditNoRequests;
+
+		try {
+			$reddit->unsave('asaas');
+		} catch (RedditException $e) {
+			$code = $e->getCode();
+		}
+
+		$this->assertEquals(RedditException::LOGIN_REQUIRED, $code);
+	}
+
 }
 

@@ -359,6 +359,37 @@ class Reddit {
 
 	}
 
+	/**
+	 * Unsaves a link
+	 * 
+	 * @access public
+	 * @param  string $thingId 
+	 * @return boolean
+	 */
+	public function unsave($thingId)
+	{
+		if (!$this->isLoggedIn()) {
+			$message = 'Cannot unsave posts without being logged in';
+			$code    = RedditException::LOGIN_REQUIRED;
+			throw new RedditException($message, $code);
+		}
+
+		$verb = 'POST';
+		$url  = 'http://www.reddit.com/api/unsave';
+		$data = array(
+			'id' => $thingId,
+			'uh' => $this->modHash,
+		);
+
+		$response = $this->getData($verb, $url, $data);
+
+		if (empty($response)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 
 }
 

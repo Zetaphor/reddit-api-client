@@ -269,5 +269,18 @@ class Link extends Entity {
 		return $this->reddit->save($thingId);
 	}
 
+	/**
+	 * Unsaves the link
+	 * 
+	 * @access public
+	 * @return boolean
+	 */
+	public function unsave()
+	{
+		$thingId = $this->getThingId();
+
+		return $this->reddit->unsave($thingId);
+	}
+
 }
 

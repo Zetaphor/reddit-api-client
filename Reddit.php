@@ -197,6 +197,12 @@ class Reddit {
 	 */
 	public function postComment($parentId, $text)
 	{
+		if (!$this->isLoggedIn()) {
+			$message = 'Cannot post a comment without a valid login';
+			$code    = RedditException::LOGIN_REQUIRED;
+			throw new RedditException($message, $code);
+		}
+
 		$verb = 'POST';
 		$url  = 'http://www.reddit.com/api/comment';
 		$data = array(
@@ -220,6 +226,12 @@ class Reddit {
 	 */
 	public function vote($thingId, $direction)
 	{
+		if (!$this->isLoggedIn()) {
+			$message = 'Cannot vote without a valid login';
+			$code    = RedditException::LOGIN_REQUIRED;
+			throw new RedditException($message, $code);
+		}
+
 		$verb = 'POST';
 		$url  = 'http://www.reddit.com/api/vote';
 		$data = array(

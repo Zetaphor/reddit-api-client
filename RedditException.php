@@ -24,5 +24,12 @@ class RedditException extends Exception {
 	 */
 	const UNABLE_TO_LOGIN = 1;
 
+	/**
+	 * Denotes that the exception was thrown because an attempt was made to
+	 * perform an action that requires a logged in client, but the client wasn't
+	 * logged in
+	 */
+	const LOGIN_REQUIRED = 2;
+
 }
 

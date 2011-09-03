@@ -6,6 +6,7 @@ require_once 'PHPUnit/Framework/TestCase.php';
 require_once '../Reddit.php';
 require_once '../RedditException.php';
 require_once 'Stub/RedditLoginRefuser.php';
+require_once 'Stub/RedditNoRequests.php';
 
 use \RedditApiClient\Reddit;
 use \RedditApiClient\RedditException;
@@ -41,6 +42,44 @@ class RedditExceptionTest extends PHPUnit_Framework_TestCase {
 		}
 
 		$this->assertEquals(RedditException::UNABLE_TO_LOGIN, $code);
+	}
+
+	/**
+	 * Tests to make sure that LOGIN_REQUIRED exceptions are thrown if attempting
+	 * to post when not logged in
+	 */
+	public function testExceptionIfPostingWhileNotLoggedIn()
+	{
+		$code = null;
+
+		$reddit = new Stub_RedditNoRequests;
+
+		try {
+			$reddit->postComment('asdfgh', 'test comment');
+		} catch (RedditException $e) {
+			$code = $e->getCode();
+		}
+
+		$this->assertEquals(RedditException::LOGIN_REQUIRED, $code);
+	}
+
+	/**
+	 * Tests to make sure that LOGIN_REQUIRED exceptions are thrown if attempting
+	 * to vote when not logged in
+	 */
+	public function testExceptionIfVotingWhileNotLoggedIn()
+	{
+		$code = null;
+
+		$reddit = new Stub_RedditNoRequests;
+
+		try {
+			$reddit->vote('asdfgh', 1);
+		} catch (RedditException $e) {
+			$code = $e->getCode();
+		}
+
+		$this->assertEquals(RedditException::LOGIN_REQUIRED, $code);
 	}
 
 }

@@ -32,6 +32,7 @@ And this is its output:
     [citation needed] I was walking into my neighbor's cat pissed a bitch asshole. 
     （╯°□°）╯︵ ┻━┻ （╯°□°）╯︵ ┻━┻ FREE KARMA.
 
+For more details of how to use this library, [see the Wiki](https://github.com/henry-smith/Reddit-API-Client/wiki)
 
 Installation
 ------------

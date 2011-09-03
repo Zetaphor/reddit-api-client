@@ -1,5 +1,7 @@
 <?php
 
+namespace RedditApiClient\Test;
+
 require_once '../src/Entity.php';
 require_once 'Fake/Entity.php';
 require_once 'PHPUnit/Framework/TestCase.php';

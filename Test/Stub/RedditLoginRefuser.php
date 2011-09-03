@@ -1,5 +1,7 @@
 <?php
 
+namespace RedditApiClient\Test;
+
 require_once '../src/Reddit.php';
 
 use \RedditApiClient\Reddit;

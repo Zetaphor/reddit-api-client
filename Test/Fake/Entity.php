@@ -1,5 +1,7 @@
 <?php
 
+namespace RedditApiClient\Test;
+
 require_once '../src/Entity.php';
 
 use \RedditApiClient\Entity;

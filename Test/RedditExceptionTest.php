@@ -1,5 +1,7 @@
 <?php
 
+namespace RedditApiClient\Test;
+
 require_once 'PHPUnit/Framework/TestCase.php';
 require_once '../src/Reddit.php';
 require_once '../src/RedditException.php';
@@ -7,6 +9,7 @@ require_once 'Stub/RedditLoginRefuser.php';
 
 use \RedditApiClient\Reddit;
 use \RedditApiClient\RedditException;
+use \PHPUnit_Framework_TestCase;
 
 /**
  * RedditExceptionTest 

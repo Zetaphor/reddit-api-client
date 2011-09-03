@@ -27,7 +27,9 @@ class RedditEntityTest extends PHPUnit_Framework_TestCase {
 	public function testArrayAccess()
 	{
 		$entity = new Fake_RedditEntity;
+		$entity->setData(array('y' => 2));
 
+		$this->assertTrue(isset($entity['y']));
 		$this->assertFalse(isset($entity['x']));
 
 		$entity['x'] = 1;

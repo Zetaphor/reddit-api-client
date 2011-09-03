@@ -73,5 +73,16 @@ abstract class RedditEntity implements ArrayAccess {
 		unset($this->data[$name]);
 	}
 
+	/**
+	 * Stores the given array as the data to be used to represent the entity
+	 * 
+	 * @access public
+	 * @param  array $data 
+	 */
+	public function setData(array $data)
+	{
+		$this->data = $data;
+	}
+
 }
 

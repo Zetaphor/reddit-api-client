@@ -33,7 +33,7 @@ class Reddit {
 	 * @param  string $username [optional]  The username to login with
 	 * @param  string $password [optional]  The password to login with
 	 */
-	public function __construct($username, $password)
+	public function __construct($username = null, $password = null)
 	{
 		if ($username && $password && !$this->login($username, $password)) {
 			$message = 'Unable to login to Reddit';

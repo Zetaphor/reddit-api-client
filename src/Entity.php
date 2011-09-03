@@ -19,12 +19,28 @@ use \ArrayAccess;
 abstract class Entity implements ArrayAccess {
 
 	/**
+	 * The Reddit client instance
+	 * 
+	 * @access protected
+	 * @var    \RedditApiClient\Reddit
+	 */
+	protected $reddit;
+
+	/**
 	 * An associative array of the raw API data that represents the entity
 	 * 
 	 * @access private
 	 * @var    array
 	 */
 	private $data = array();
+
+	/**
+	 * @access public
+	 * @param  \RedditApiClient\Reddit $reddit 
+	 */
+	public function __construct($reddit = null) {
+		$this->reddit = $reddit;
+	}
 
 	/**
 	 * ArrayAccess: Indicates whether the given value exists

@@ -32,6 +32,50 @@ require_once 'Entity.php';
 class User extends Entity {
 
 	/**
+	 * Returns the user's unique ID
+	 * 
+	 * @access public
+	 * @return string
+	 */
+	public function getId()
+	{
+		return $this['id'];
+	}
+
+	/**
+	 * Returns the user's name
+	 * 
+	 * @access public
+	 * @return string
+	 */
+	public function getName()
+	{
+		return $this['name'];
+	}
+
+	/**
+	 * Returns the user's comment karma
+	 * 
+	 * @access public
+	 * @return integer
+	 */
+	public function getCommentKarma()
+	{
+		return $this['comment_karma'];
+	}
+
+	/**
+	 * Returns the user's link karma
+	 * 
+	 * @access public
+	 * @return integer
+	 */
+	public function getLinkKarma()
+	{
+		return $this['link_karma'];
+	}
+
+	/**
 	 * Indicates whether the user is a moderator
 	 * 
 	 * @access public

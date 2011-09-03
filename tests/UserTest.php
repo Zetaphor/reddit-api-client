@@ -24,6 +24,21 @@ class UserTest extends PHPUnit_Framework_TestCase {
 		$this->user = new User;
 	}
 
+	public function testGetters()
+	{
+		$this->user->setData(array(
+			'id' => 'aqwerty',
+			'name' => 'I_RAPE_CATS',
+			'comment_karma' => 1,
+			'link_karma' => 2,
+		));
+
+		$this->assertEquals('aqwerty', $this->user->getId());
+		$this->assertEquals('I_RAPE_CATS', $this->user->getName());
+		$this->assertEquals('1', $this->user->getCommentKarma());
+		$this->assertEquals('2', $this->user->getLinkKarma());
+	}
+
 	public function testKnowsIfMod()
 	{
 		$this->assertFalse($this->user->isMod());

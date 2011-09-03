@@ -124,6 +124,8 @@ class Reddit {
 
 		if (isset($response['data']['modhash'])) {
 			$this->modHash = $response['data']['modhash'];
+		} elseif (isset($response[0]['data']['modhash'])) {
+			$this->modHash = $response[0]['data']['modhash'];
 		}
 
 		return $response;
@@ -177,7 +179,7 @@ class Reddit {
 			}
 		}
 
-		if ($post instanceof Post) {
+		if (($post instanceof Post) && $withComments) {
 			$post->setComments($comments);
 		}
 
@@ -200,7 +202,16 @@ class Reddit {
 
 		var_dump($response);
 	}
+	*/
 
+	/**
+	 * Casts a vote for a comment or link
+	 *
+	 * @access public
+	 * @param  string  $thingId 
+	 * @param  integer $direction  1 for upvote, -1 for down, 0 to remove vote
+	 * @return boolean
+	 */
 	public function vote($thingId, $direction)
 	{
 		$verb = 'POST';
@@ -213,10 +224,12 @@ class Reddit {
 
 		$response = $this->getData($verb, $url, $data);
 
-		var_dump($response);
-		var_dump($this->modHash);
+		if (empty($response)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
-	*/
 
 }
 

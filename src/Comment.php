@@ -67,6 +67,17 @@ class Comment extends Entity {
 	}
 
 	/**
+	 * Returns the comment's unique 't1_*' style ID
+	 * 
+	 * @access public
+	 * @return string
+	 */
+	public function getThingId()
+	{
+		return $this['name'];
+	}
+
+	/**
 	 * Returns the comment's unique ID
 	 * 
 	 * @access public
@@ -177,6 +188,20 @@ class Comment extends Entity {
 	public function setParent($parentComment)
 	{
 		$this->parentComment = $parentComment;
+	}
+
+	/**
+	 * Casts a vote on the comment
+	 * 
+	 * @access public
+	 * @param  integer $direction  1 for upvote, -1 for down, 0 to remove vote
+	 * @return boolean
+	 */
+	public function vote($direction)
+	{
+		$thingId = $this->getThingId();
+
+		return $this->reddit->vote($thingId, $direction);
 	}
 
 }

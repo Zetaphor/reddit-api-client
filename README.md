@@ -59,10 +59,5 @@ As of 2011-09-03 this project is less than 24 hours old. I was looking at
 Reddit's API documentation last night and realised I couldn't find a PHP
 client for it.
 
-I've unit-tested as much as I could be bothered too and for the most part this
-is pretty robust code. The parts that are actually implemented are probably
-safe for production use, the main reason not to at the moment is the sheer
-lack of missing functionality.
-
 Pull requests are welcome by the way!
 

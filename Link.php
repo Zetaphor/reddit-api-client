@@ -373,7 +373,7 @@ class Link extends Entity {
 	}
 
 	/**
-	 * Indicates whether the link is restricted to those over 18 years of age
+	 * Indicates whether the link is restricted to those 18 years of age or more
 	 * 
 	 * @access public
 	 * @return boolean

@@ -543,7 +543,7 @@ class Reddit {
 			'kind'  => $linkType,
 			'sr'    => $subredditName,
 			'title' => $title,
-			'selftext'   => $url,
+			'url'   => $url,
 		);
 
 		$response = $this->sendRequest($verb, $url, $data);

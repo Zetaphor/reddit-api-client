@@ -9,6 +9,13 @@ use \ArrayAccess;
  *
  * Base-class for modeling entities exposed by the API
  *
+ * One of the main reasons why this class exists and why it provides
+ * ArrayAccess the entity's data is that it's quite possible for the API to
+ * change. For example, if they start sending some useful new field of data
+ * for comments, and somebody out there is using this library and doesn't want
+ * to wait for somebody to add a getter method for it, they can still get to it
+ * in the short-term through ArrayAccess.
+ *
  * @author    Henry Smith <henry@henrysmith.org> 
  * @copyright 2011 Henry Smith
  * @license   GPLv2.0

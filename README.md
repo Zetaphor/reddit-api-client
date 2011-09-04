@@ -61,3 +61,83 @@ client for it.
 
 Pull requests are welcome by the way!
 
+
+Examples
+--------
+
+Here's some code that uses the client to show the thread of comments on the top
+link in /r/programming
+
+    <?php
+    
+    require_once 'Reddit/Reddit.php';
+    use \RedditApiClient\Reddit;
+    
+    
+    $reddit   = new Reddit;
+    $proggit  = $reddit->getLinksBySubreddit('programming');
+    $topLink  = $proggit[0];
+    $comments = $topLink->getComments();
+    
+    
+    echo $topLink->getTitle(), "\n\n";
+    
+    
+    foreach ($comments as $comment) {
+    	showComment($comment);
+    }
+    
+    
+    function showComment($comment, $level = 1)
+    {
+    	$prefix = str_pad('', $level * 4, ' ');
+    
+    	$body = $comment->getBody();
+    	$body = wordwrap($body, 80 - strlen($prefix), "\n", true);
+    	$body = str_replace("\n", "\n{$prefix}", $body);
+    
+    	$authorName = $comment->getAuthorName();
+    
+    	echo $prefix, $authorName, "\n";
+    	echo $prefix, str_pad('', strlen($authorName), '-'), "\n";
+    	echo $prefix, $body, "\n\n";
+    
+    	$replies = $comment->getReplies();
+    
+    	foreach ($replies as $reply) {
+    		showComment($reply, $level + 1);
+    	}
+    }
+
+And here's the output:
+
+    We're developing a complete RPG in 14 days, live 
+    streaming 24 hours a day, to raise money for 
+    Child's Play. Watch me code it in real time!
+    
+        a_redditor
+        ----------
+        You should crosspost to /r/gamedev.
+    
+            huntersd
+            --------
+            Done!
+    
+                alexanderpas
+                ------------
+                how about /r/gaming ?
+    
+                    Metsuro
+                    -------
+                    I put a xpost in /r/gaming.
+                    
+    
+                    huntersd
+                    --------
+                    Done! 
+
+    [truncated]
+
+
+
+

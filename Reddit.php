@@ -340,6 +340,22 @@ class Reddit {
 
 		$response = $this->sendRequest($verb, $url, $data);
 
+		if (!is_array($response) || !isset($response['jquery'])) {
+			return false;
+		}
+	
+		foreach ($response['jquery'] as $element) {
+
+			if (!isset($element[3][0])) {
+				continue;
+			}
+
+			if (strpos($element[3][0], '.error') !== false) {
+				return false;
+			}
+		}
+
+
 		return true;
 	}
 
@@ -527,16 +543,33 @@ class Reddit {
 			'kind'  => $linkType,
 			'sr'    => $subredditName,
 			'title' => $title,
-			'url'   => $url,
+			'selftext'   => $url,
 		);
 
 		$response = $this->sendRequest($verb, $url, $data);
 
-		if (isset($response['jquery']) && count($response['jquery']) <= 19) {
-			return true;
-		} else {
+		if (!is_array($response) || !isset($response['jquery'])) {
 			return false;
 		}
+	
+		// *Surely* there has to be a better way of detecting that the submission was
+		// rejected than this hackery-dackery-doo
+		foreach ($response['jquery'] as $element) {
+
+			if (!isset($element[3][0])) {
+				continue;
+			}
+
+			if (strpos($element[3][0], '.error') !== false) {
+				return false;
+			}
+
+			if (strpos($element[3][0], "You'll have to wait a while before you can submit again") !== false) {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 }

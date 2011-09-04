@@ -19,7 +19,7 @@ require_once 'HttpResponse.php';
  * @copyright 2011 Henry Smith
  * @license   GPLv2.0
  * @package   Reddit API Client
- * @version   0.10
+ * @version   0.50
  */
 class HttpRequest {
 

@@ -16,7 +16,7 @@ use \RedditApiClient\Comment;
  * @license    GPLv2.0
  * @package    Reddit API Client
  * @subpackage Test
- * @version    0.10
+ * @version    0.50
  */
 class CommentTest extends PHPUnit_Framework_TestCase {
 

@@ -14,7 +14,7 @@ use \Exception;
  * @license   GPLv2.0
  * @package   Reddit API Client
  * @uses      \Exception
- * @version   0.10
+ * @version   0.50
  */
 class RedditException extends Exception {
 

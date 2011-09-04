@@ -16,7 +16,7 @@ use \RedditApiClient\Entity;
  * @license    GPLv2.0
  * @package    Reddit API Client
  * @subpackage Test
- * @version    0.00
+ * @version    0.50
  */
 class Fake_Entity extends Entity {
 

@@ -18,7 +18,7 @@ use \RedditApiClient\Reddit;
  * @package    Reddit API Client
  * @subpackage Test
  * @uses       \RedditApiClient\Reddit
- * @version    0.00
+ * @version    0.50
  */
 class Stub_RedditLoginRefuser extends Reddit {
 

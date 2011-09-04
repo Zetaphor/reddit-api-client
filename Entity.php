@@ -21,7 +21,7 @@ use \ArrayAccess;
  * @license   GPLv2.0
  * @package   Reddit API Client
  * @uses      \ArrayAccess
- * @version   0.00
+ * @version   0.10
  */
 abstract class Entity implements ArrayAccess {
 

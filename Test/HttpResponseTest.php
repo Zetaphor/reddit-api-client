@@ -18,7 +18,7 @@ use \RedditApiClient\HttpResponse;
  * @license    GPLv2.0
  * @package    Reddit API Client
  * @subpackage Test
- * @version    0.00
+ * @version    0.10
  */
 class HttpResponseTest extends PHPUnit_Framework_TestCase {
 

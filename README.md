@@ -96,10 +96,6 @@ link in /r/programming
     	$body = wordwrap($body, 80 - strlen($prefix), "\n", true);
     	$body = str_replace("\n", "\n{$prefix}", $body);
     
-    	$authorName = $comment->getAuthorName();
-    
-    	echo $prefix, $authorName, "\n";
-    	echo $prefix, str_pad('', strlen($authorName), '-'), "\n";
     	echo $prefix, $body, "\n\n";
     
     	$replies = $comment->getReplies();
@@ -115,26 +111,14 @@ And here's the output:
     streaming 24 hours a day, to raise money for 
     Child's Play. Watch me code it in real time!
     
-        a_redditor
-        ----------
         You should crosspost to /r/gamedev.
     
-            huntersd
-            --------
             Done!
     
-                alexanderpas
-                ------------
                 how about /r/gaming ?
     
-                    Metsuro
-                    -------
                     I put a xpost in /r/gaming.
                     
-    
-                    huntersd
-                    --------
-                    Done! 
 
     [truncated]
 

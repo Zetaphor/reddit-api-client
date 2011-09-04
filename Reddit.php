@@ -502,5 +502,42 @@ class Reddit {
 		}
 	}
 
+	/**
+	 * Submits a link
+	 * 
+	 * @access public
+	 * @param  string $subredditName   e.g. 'pics', *not* '/r/pics'
+	 * @param  string $linkType        either 'self' or 'link'
+	 * @param  string $title           The title of the submission
+	 * @param  string $url             Either the URL or the self-text
+	 * @return boolean
+	 */
+	public function submit($subredditName, $linkType, $title, $url)
+	{
+		if (!$this->isLoggedIn()) {
+			$message = 'Cannot submit links without being logged in';
+			$code    = RedditException::LOGIN_REQUIRED;
+			throw new RedditException($message, $code);
+		}
+
+		$verb = 'POST';
+		$url  = 'http://www.reddit.com/api/submit';
+		$data = array(
+			'uh'    => $this->modHash,
+			'kind'  => $linkType,
+			'sr'    => $subredditName,
+			'title' => $title,
+			'url'   => $url,
+		);
+
+		$response = $this->getData($verb, $url, $data);
+
+		if (isset($response['jquery']) && count($response['jquery']) <= 19) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
 

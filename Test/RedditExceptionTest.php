@@ -178,5 +178,24 @@ class RedditExceptionTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals(RedditException::LOGIN_REQUIRED, $code);
 	}
 
+	/**
+	 * Tests to make sure that LOGIN_REQUIRED exceptions are thrown if attempting
+	 * to submit links when not logged in
+	 */
+	public function testExceptionIfSubmittingLinkWhileNotLoggedIn()
+	{
+		$code = null;
+
+		$reddit = new Stub_RedditNoRequests;
+
+		try {
+			$reddit->submit('pics', 'link', 'Nailed It', 'http://imgur.com/112345');
+		} catch (RedditException $e) {
+			$code = $e->getCode();
+		}
+
+		$this->assertEquals(RedditException::LOGIN_REQUIRED, $code);
+	}
+
 }
 

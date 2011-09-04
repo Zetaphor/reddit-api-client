@@ -114,7 +114,7 @@ class Reddit {
 	 * @param  string $body 
 	 * @return array
 	 */
-	public function getData($verb, $url, $body = '')
+	public function sendRequest($verb, $url, $body = '')
 	{
 		$request = new HttpRequest;
 		$request->setUrl($url);
@@ -165,7 +165,7 @@ class Reddit {
 			$url = "http://www.reddit.com/by_id/t3_{$linkId}.json";
 		}
 
-		$response = $this->getData($verb, $url);
+		$response = $this->sendRequest($verb, $url);
 
 		$link = null;
 
@@ -216,7 +216,7 @@ class Reddit {
 		$verb = 'GET';
 		$url  = "http://www.reddit.com/user/{$name}/about.json";
 		
-		$response = $this->getData($verb, $url);
+		$response = $this->sendRequest($verb, $url);
 
 		$account = new Account($this);
 		$account->setData($response['data']);
@@ -236,7 +236,7 @@ class Reddit {
 		$verb = 'GET';
 		$url  = "http://www.reddit.com/user/{$name}.json";
 		
-		$response = $this->getData($verb, $url);
+		$response = $this->sendRequest($verb, $url);
 
 		$links = array();
 
@@ -264,7 +264,7 @@ class Reddit {
 		$verb = 'GET';
 		$url  = "http://www.reddit.com/r/{$subredditName}.json";
 
-		$response = $this->getData($verb, $url);
+		$response = $this->sendRequest($verb, $url);
 
 		$links = array();
 
@@ -298,7 +298,7 @@ class Reddit {
 		$verb = 'GET';
 		$url  = 'http://www.reddit.com/reddits/mine.json';
 
-		$response = $this->getData($verb, $url);
+		$response = $this->sendRequest($verb, $url);
 
 		$subreddits = array();
 
@@ -338,7 +338,7 @@ class Reddit {
 			'uh'       => $this->modHash,
 		);
 
-		$response = $this->getData($verb, $url, $data);
+		$response = $this->sendRequest($verb, $url, $data);
 
 		return true;
 	}
@@ -367,7 +367,7 @@ class Reddit {
 			'uh'       => $this->modHash,
 		); 
 
-		$response = $this->getData($verb, $url, $data);
+		$response = $this->sendRequest($verb, $url, $data);
 
 		if (empty($response)) {
 			return true;
@@ -399,7 +399,7 @@ class Reddit {
 			'uh' => $this->modHash,
 		);
 
-		$response = $this->getData($verb, $url, $data);
+		$response = $this->sendRequest($verb, $url, $data);
 
 		if (empty($response)) {
 			return true;
@@ -431,7 +431,7 @@ class Reddit {
 			'uh' => $this->modHash,
 		);
 
-		$response = $this->getData($verb, $url, $data);
+		$response = $this->sendRequest($verb, $url, $data);
 
 		if (empty($response)) {
 			return true;
@@ -462,7 +462,7 @@ class Reddit {
 			'uh' => $this->modHash,
 		);
 
-		$response = $this->getData($verb, $url, $data);
+		$response = $this->sendRequest($verb, $url, $data);
 
 		if (empty($response)) {
 			return true;
@@ -493,7 +493,7 @@ class Reddit {
 			'uh' => $this->modHash,
 		);
 
-		$response = $this->getData($verb, $url, $data);
+		$response = $this->sendRequest($verb, $url, $data);
 
 		if (empty($response)) {
 			return true;
@@ -530,7 +530,7 @@ class Reddit {
 			'url'   => $url,
 		);
 
-		$response = $this->getData($verb, $url, $data);
+		$response = $this->sendRequest($verb, $url, $data);
 
 		if (isset($response['jquery']) && count($response['jquery']) <= 19) {
 			return true;

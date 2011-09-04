@@ -27,7 +27,7 @@ class Stub_RedditNoRequests extends Reddit {
 		return false;
 	}
 
-	public function getData($verb, $url, $body = '')
+	public function sendResponse($verb, $url, $body = '')
 	{
 		return null;
 	}

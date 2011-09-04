@@ -130,6 +130,7 @@ class Account extends Entity {
 		$username = $this->getName();
 
 		$links = $this->reddit->getLinksByUsername();
+		return $links;
 	}
 
 }

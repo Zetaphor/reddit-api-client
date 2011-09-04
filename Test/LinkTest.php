@@ -116,5 +116,15 @@ class LinkTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue($this->link->isAgeRestricted());
 	}
 
+	/**
+	 * Verifies that Links can tell if the logged-in user has clicked on them
+	 */
+	public function testKnowsIfClicked()
+	{
+		$this->assertFalse($this->link->isClicked());
+		$this->link->setData(array('clicked' => true));
+		$this->assertTrue($this->link->isClicked());
+	}
+
 }
 

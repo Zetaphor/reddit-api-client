@@ -382,6 +382,20 @@ class Link extends Entity {
 	{
 		return isset($this['over18']) ? $this['over18'] : false;
 	}
+	
+	/**
+	 * Indicates whether the logged-in user has clicked on the link before
+	 *
+	 * Won't return anything meaningful if retrieved by a reddit instance that
+	 * wasn't logged in
+	 * 
+	 * @access public
+	 * @return boolean
+	 */
+	public function isClicked()
+	{
+		return isset($this['clicked']) ? $this['clicked'] : false;
+	}
 
 }
 

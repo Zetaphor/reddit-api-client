@@ -308,5 +308,41 @@ class Link extends Entity {
 		return $this->reddit->unhide($thingId);
 	}
 
+	/**
+	 * Indicates whether the post has been saved by the logged in user
+	 *
+	 * Won't return anything meaningful if the post was retrieved from a Reddit
+	 * instance that wasn't logged in
+	 * 
+	 * @access public
+	 * @return boolean
+	 */
+	public function isSaved()
+	{
+		if (isset($this['saved'])) {
+			return $this['saved'];
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Indicates whether the post has been hidden by the logged in user
+	 *
+	 * Won't return anything meaningful if the post was retrieved from a Reddit
+	 * instance that wasn't logged in
+	 * 
+	 * @access public
+	 * @return boolean
+	 */
+	public function isHidden()
+	{
+		if (isset($this['hidden'])) {
+			return $this['hidden'];
+		} else {
+			return false;
+		}
+	}
+
 }
 

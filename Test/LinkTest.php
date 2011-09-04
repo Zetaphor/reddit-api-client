@@ -65,5 +65,25 @@ class LinkTest extends PHPUnit_Framework_TestCase {
 		$this->assertFalse($this->link->isSelfPost());
 	}
 
+	/**
+	 * Verifies that Link can correctly identify if it represents a hidden post
+	 */
+	public function testKnowsIfHidden()
+	{
+		$this->assertFalse($this->link->isHidden());
+		$this->link->setData(array('hidden' => true));
+		$this->assertTrue($this->link->isHidden());
+	}
+
+	/**
+	 * Verifies that Link can correctly identify if it represents a saved post
+	 */
+	public function testKnowsIfSaved()
+	{
+		$this->assertFalse($this->link->isSaved());
+		$this->link->setData(array('saved' => true));
+		$this->assertTrue($this->link->isSaved());
+	}
+
 }
 

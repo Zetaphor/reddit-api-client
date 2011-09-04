@@ -17,14 +17,15 @@ use \PHPUnit_Framework_TestCase;
  *
  * Verifies that exceptions are thrown correctly by the API client
  * 
- * @author    Henry Smith <henry@henrysmith.org> 
- * @copyright 2011 Henry Smith
- * @license   GPLv2.0
- * @package   Reddit API Client
- * @uses      \PHPUnit_Framework_TestCase
- * @uses      \RedditApiClient\Reddit
- * @uses      \RedditApiClient\RedditException
- * @version   0.00
+ * @author     Henry Smith <henry@henrysmith.org> 
+ * @copyright  2011 Henry Smith
+ * @license    GPLv2.0
+ * @package    Reddit API Client
+ * @subpackage Test
+ * @uses       \PHPUnit_Framework_TestCase
+ * @uses       \RedditApiClient\Reddit
+ * @uses       \RedditApiClient\RedditException
+ * @version    0.00
  */
 class RedditExceptionTest extends PHPUnit_Framework_TestCase {
 

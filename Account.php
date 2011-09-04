@@ -119,5 +119,18 @@ class Account extends Entity {
 		return isset($this['has_mod_mail']) ? $this['has_mod_mail'] : false;
 	}
 
+	/**
+	 * Returns an array of links posted by the user
+	 * 
+	 * @access public
+	 * @return array
+	 */
+	public function getLinks()
+	{
+		$username = $this->getName();
+
+		$links = $this->reddit->getLinksByUsername();
+	}
+
 }
 

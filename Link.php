@@ -159,6 +159,9 @@ class Link extends Entity {
 	 *
 	 * If the link is a self-post, the URL will contain the text body of the post
 	 * instead.
+	 *
+	 * It's worth emphasising here that this method *does not* return the URL of
+	 * the post's page on reddit.com. Use getPermalink() for that.
 	 * 
 	 * @access public
 	 * @return string
@@ -342,6 +345,31 @@ class Link extends Entity {
 		} else {
 			return false;
 		}
+	}
+
+	/**
+	 * Returns the permalink to the link's page on reddit.com
+	 *
+	 * By default this will be a relative URL because this is what the API
+	 * returns, but setting $absolute to true sorts that out.
+	 * 
+	 * @access public
+	 * @param  boolean $absolute 
+	 * @return string
+	 */
+	public function getPermalink($absolute = false)
+	{
+		if (!isset($this['permalink'])) {
+			return null;
+		}
+
+		$permalink = $this['permalink'];
+
+		if ($absolute) {
+			$permalink = 'http://www.reddit.com' . $permalink;
+		}
+
+		return $permalink;
 	}
 
 }

@@ -85,5 +85,25 @@ class LinkTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue($this->link->isSaved());
 	}
 
+	/**
+	 * Verifies that getPermalink() works correctly and can return the absolute
+	 * version of the URL if requested
+	 */
+	public function testGetPermalink()
+	{
+		$this->assertEquals(null, $this->link->getPermalink());
+
+		$this->link->setData(array('permalink' => '/r/programming'));
+
+		$expectedRelative = '/r/programming';
+		$expectedAbsolute = 'http://www.reddit.com/r/programming';
+		
+		$actualRelative = $this->link->getPermalink();
+		$actualAbsolute = $this->link->getPermalink(true);
+
+		$this->assertEquals($expectedRelative, $actualRelative);
+		$this->assertEquals($expectedAbsolute, $actualAbsolute);
+	}
+
 }
 

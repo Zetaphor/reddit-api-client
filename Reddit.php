@@ -2,11 +2,12 @@
 
 namespace RedditApiClient;
 
+require_once 'Account.php';
+require_once 'Comment.php';
 require_once 'HttpRequest.php';
 require_once 'HttpResponse.php';
-require_once 'RedditException.php';
 require_once 'Link.php';
-require_once 'Comment.php';
+require_once 'RedditException.php';
 require_once 'Subreddit.php';
 
 /**
@@ -452,6 +453,25 @@ class Reddit {
 		}
 	}
 
+	/**
+	 * Fetches and returns a user account
+	 * 
+	 * @access public
+	 * @param  string $name 
+	 * @return \RedditApiClient\Account
+	 */
+	public function getAccountByName($name)
+	{
+		$verb = 'GET';
+		$url  = "http://www.reddit.com/user/{$name}/about.json";
+		
+		$response = $this->getData($verb, $url);
+
+		$account = new Account($this);
+		$account->setData($response['data']);
+
+		return $account;
+	}
 
 }
 

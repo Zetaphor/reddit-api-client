@@ -218,5 +218,57 @@ class Comment extends Entity {
 		return $this->reddit->postComment($thingId, $text);
 	}
 
+	/**
+	 * Saves the comment for the logged-in user
+	 * 
+	 * @access public
+	 * @return boolean
+	 */
+	public function save()
+	{
+		$thingId = $this->getThingId();
+
+		return $this->reddit->save($thingId);
+	}
+
+	/**
+	 * Unsaves the comment for the logged-in user
+	 * 
+	 * @access public
+	 * @return boolean
+	 */
+	public function unsave()
+	{
+		$thingId = $this->getThingId();
+
+		return $this->reddit->unsave($thingId);
+	}
+
+	/**
+	 * Hides a comment for the logged-in user
+	 * 
+	 * @access public
+	 * @return boolean
+	 */
+	public function hide()
+	{
+		$thingId = $this->getThingId();
+
+		return $this->reddit->hide($thingId);
+	}
+
+	/**
+	 * Unhides a comment for the logged-in user
+	 * 
+	 * @access public
+	 * @return boolean
+	 */
+	public function unhide()
+	{
+		$thingId = $this->getThingId();
+
+		return $this->reddit->unhide($thingId);
+	}
+
 }
 

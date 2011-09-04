@@ -91,6 +91,21 @@ class Reddit {
 	}
 
 	/**
+	 * Indicates whether the client is logged in as a Reddit user
+	 * 
+	 * @access public
+	 * @return boolean
+	 */
+	public function isLoggedIn()
+	{
+		if ($this->sessionCookie === null) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
 	 * Sends a request to Reddit and returns the response received
 	 * 
 	 * @access public
@@ -190,6 +205,116 @@ class Reddit {
 	}
 
 	/**
+	 * Fetches and returns a user account
+	 * 
+	 * @access public
+	 * @param  string $name 
+	 * @return \RedditApiClient\Account
+	 */
+	public function getAccountByUsername($name)
+	{
+		$verb = 'GET';
+		$url  = "http://www.reddit.com/user/{$name}/about.json";
+		
+		$response = $this->getData($verb, $url);
+
+		$account = new Account($this);
+		$account->setData($response['data']);
+
+		return $account;
+	}
+
+	/**
+	 * Returns an array of links posted by the account with the given username
+	 * 
+	 * @access public
+	 * @param  string $name 
+	 * @return array
+	 */
+	public function getLinksByUsername($name)
+	{
+		$verb = 'GET';
+		$url  = "http://www.reddit.com/user/{$name}.json";
+		
+		$response = $this->getData($verb, $url);
+
+		$links = array();
+
+		foreach ($response['data']['children'] as $child) {
+
+			$link = new Link($this);
+			$link->setData($child['data']);
+
+			$links[] = $link;
+
+		}
+
+		return $links;
+	}
+
+	/**
+	 * Returns an array of the links in a subreddit
+	 * 
+	 * @access public
+	 * @param  string $subredditName  Plain-text name
+	 * @return array
+	 */
+	public function getLinksBySubreddit($subredditName)
+	{
+		$verb = 'GET';
+		$url  = "http://www.reddit.com/r/{$subredditName}.json";
+
+		$response = $this->getData($verb, $url);
+
+		$links = array();
+
+		foreach ($response['data']['children'] as $child) {
+
+			$link = new Link($this);
+			$link->setData($child['data']);
+
+			$links[] = $link;
+			
+		}
+
+		return $links;
+	}
+
+	/**
+	 * Fetches and returns an array of the subreddits to which the logged-in user
+	 * is subscribed
+	 * 
+	 * @access public
+	 * @return array
+	 */
+	public function getMySubreddits()
+	{
+		if (!$this->isLoggedIn()) {
+			$message = 'No user is logged in to list subreddit subscriptions';
+			$code    = RedditException::LOGIN_REQUIRED;
+			throw new RedditException($message, $code);
+		}
+
+		$verb = 'GET';
+		$url  = 'http://www.reddit.com/reddits/mine.json';
+
+		$response = $this->getData($verb, $url);
+
+		$subreddits = array();
+
+		foreach ($response['data']['children'] as $child) {
+
+			$subreddit = new Subreddit($this);
+			$subreddit->setData($child['data']);
+
+			$subreddits[] = $subreddit;
+
+		}
+
+		return $subreddits;
+	}
+
+	/**
 	 * Posts a comment in reply to a link or comment
 	 * 
 	 * @access public
@@ -251,85 +376,9 @@ class Reddit {
 		}
 	}
 
-	/**
-	 * Returns an array of the links in a subreddit
-	 * 
-	 * @access public
-	 * @param  string $subredditName  Plain-text name
-	 * @return array
-	 */
-	public function getLinksBySubreddit($subredditName)
-	{
-		$verb = 'GET';
-		$url  = "http://www.reddit.com/r/{$subredditName}.json";
-
-		$response = $this->getData($verb, $url);
-
-		$links = array();
-
-		foreach ($response['data']['children'] as $child) {
-
-			$link = new Link($this);
-			$link->setData($child['data']);
-
-			$links[] = $link;
-			
-		}
-
-		return $links;
-	}
 
 	/**
-	 * Indicates whether the client is logged in as a Reddit user
-	 * 
-	 * @access public
-	 * @return boolean
-	 */
-	public function isLoggedIn()
-	{
-		if ($this->sessionCookie === null) {
-			return false;
-		}
-
-		return true;
-	}
-
-	/**
-	 * Fetches and returns an array of the subreddits to which the logged-in user
-	 * is subscribed
-	 * 
-	 * @access public
-	 * @return array
-	 */
-	public function getMySubreddits()
-	{
-		if (!$this->isLoggedIn()) {
-			$message = 'No user is logged in to list subreddit subscriptions';
-			$code    = RedditException::LOGIN_REQUIRED;
-			throw new RedditException($message, $code);
-		}
-
-		$verb = 'GET';
-		$url  = 'http://www.reddit.com/reddits/mine.json';
-
-		$response = $this->getData($verb, $url);
-
-		$subreddits = array();
-
-		foreach ($response['data']['children'] as $child) {
-
-			$subreddit = new Subreddit($this);
-			$subreddit->setData($child['data']);
-
-			$subreddits[] = $subreddit;
-
-		}
-
-		return $subreddits;
-	}
-
-	/**
-	 * Saves a link
+	 * Saves a link or comment
 	 * 
 	 * @access public
 	 * @param  string $thingId 
@@ -338,7 +387,7 @@ class Reddit {
 	public function save($thingId)
 	{
 		if (!$this->isLoggedIn()) {
-			$message = 'Cannot save posts without being logged in';
+			$message = 'Cannot save things without being logged in';
 			$code    = RedditException::LOGIN_REQUIRED;
 			throw new RedditException($message, $code);
 		}
@@ -361,7 +410,7 @@ class Reddit {
 	}
 
 	/**
-	 * Unsaves a link
+	 * Unsaves a link or comment
 	 * 
 	 * @access public
 	 * @param  string $thingId 
@@ -370,7 +419,7 @@ class Reddit {
 	public function unsave($thingId)
 	{
 		if (!$this->isLoggedIn()) {
-			$message = 'Cannot unsave posts without being logged in';
+			$message = 'Cannot unsave things without being logged in';
 			$code    = RedditException::LOGIN_REQUIRED;
 			throw new RedditException($message, $code);
 		}
@@ -392,7 +441,7 @@ class Reddit {
 	}
 
 	/**
-	 * Hides a link
+	 * Hides a link or comment
 	 * 
 	 * @access public
 	 * @param  string $thingId 
@@ -401,7 +450,7 @@ class Reddit {
 	public function hide($thingId)
 	{
 		if (!$this->isLoggedIn()) {
-			$message = 'Cannot hide posts without being logged in';
+			$message = 'Cannot hide things without being logged in';
 			$code    = RedditException::LOGIN_REQUIRED;
 			throw new RedditException($message, $code);
 		}
@@ -423,7 +472,7 @@ class Reddit {
 	}
 
 	/**
-	 * Unhides a link
+	 * Unhides a link or comment
 	 * 
 	 * @access public
 	 * @param  string $thingId 
@@ -432,7 +481,7 @@ class Reddit {
 	public function unhide($thingId)
 	{
 		if (!$this->isLoggedIn()) {
-			$message = 'Cannot hide posts without being logged in';
+			$message = 'Cannot hide things without being logged in';
 			$code    = RedditException::LOGIN_REQUIRED;
 			throw new RedditException($message, $code);
 		}
@@ -451,54 +500,6 @@ class Reddit {
 		} else {
 			return false;
 		}
-	}
-
-	/**
-	 * Fetches and returns a user account
-	 * 
-	 * @access public
-	 * @param  string $name 
-	 * @return \RedditApiClient\Account
-	 */
-	public function getAccountByUsername($name)
-	{
-		$verb = 'GET';
-		$url  = "http://www.reddit.com/user/{$name}/about.json";
-		
-		$response = $this->getData($verb, $url);
-
-		$account = new Account($this);
-		$account->setData($response['data']);
-
-		return $account;
-	}
-
-	/**
-	 * Returns an array of links posted by the account with the given username
-	 * 
-	 * @access public
-	 * @param  string $name 
-	 * @return array
-	 */
-	public function getLinksByUsername($name)
-	{
-		$verb = 'GET';
-		$url  = "http://www.reddit.com/user/{$name}.json";
-		
-		$response = $this->getData($verb, $url);
-
-		$links = array();
-
-		foreach ($response['data']['children'] as $child) {
-
-			$link = new Link($this);
-			$link->setData($child['data']);
-
-			$links[] = $link;
-
-		}
-
-		return $links;
 	}
 
 }

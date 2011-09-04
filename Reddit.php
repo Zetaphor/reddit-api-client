@@ -460,7 +460,7 @@ class Reddit {
 	 * @param  string $name 
 	 * @return \RedditApiClient\Account
 	 */
-	public function getAccountByName($name)
+	public function getAccountByUsername($name)
 	{
 		$verb = 'GET';
 		$url  = "http://www.reddit.com/user/{$name}/about.json";
@@ -471,6 +471,34 @@ class Reddit {
 		$account->setData($response['data']);
 
 		return $account;
+	}
+
+	/**
+	 * Returns an array of links posted by the account with the given username
+	 * 
+	 * @access public
+	 * @param  string $name 
+	 * @return array
+	 */
+	public function getLinksByUsername($name)
+	{
+		$verb = 'GET';
+		$url  = "http://www.reddit.com/user/{$name}.json";
+		
+		$response = $this->getData($verb, $url);
+
+		$links = array();
+
+		foreach ($response['data']['children'] as $child) {
+
+			$link = new Link($this);
+			$link->setData($child['data']);
+
+			$links[] = $link;
+
+		}
+
+		return $links;
 	}
 
 }

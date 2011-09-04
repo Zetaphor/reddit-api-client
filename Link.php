@@ -256,7 +256,7 @@ class Link extends Entity {
 	{
 		$thingId = $this->getThingId();
 
-		return $this->reddit->postComment($thingId, $text);
+		return $this->reddit->comment($thingId, $text);
 	}
 
 	/**

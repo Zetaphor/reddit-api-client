@@ -322,7 +322,7 @@ class Reddit {
 	 * @param  string $text 
 	 * @return boolean
 	 */
-	public function postComment($parentId, $text)
+	public function comment($parentId, $text)
 	{
 		if (!$this->isLoggedIn()) {
 			$message = 'Cannot post a comment without a valid login';

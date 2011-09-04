@@ -56,7 +56,7 @@ class RedditExceptionTest extends PHPUnit_Framework_TestCase {
 		$reddit = new Stub_RedditNoRequests;
 
 		try {
-			$reddit->postComment('asdfgh', 'test comment');
+			$reddit->comment('asdfgh', 'test comment');
 		} catch (RedditException $e) {
 			$code = $e->getCode();
 		}

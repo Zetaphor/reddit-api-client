@@ -55,9 +55,15 @@ never mind" bullshit.
 Development Status
 ------------------
 
-As of 2011-09-03 this project is less than 24 hours old. I was looking at
-Reddit's API documentation last night and realised I couldn't find a PHP
-client for it.
+This library exposes the majority of the functionality of the API.
+
+Anything to do with 'flair' isn't supported, but I can't see much demand for
+that functionality anyway, so I can't find the motivation to actully implement
+it.
+
+Submitting self-posts isn't working yet, which is the only important missing
+feature left that I know of. I will remove this paragraph as soon as this is
+resolved.
 
 Pull requests are welcome by the way!
 

@@ -372,5 +372,16 @@ class Link extends Entity {
 		return $permalink;
 	}
 
+	/**
+	 * Indicates whether the link is restricted to those over 18 years of age
+	 * 
+	 * @access public
+	 * @return boolean
+	 */
+	public function isAgeRestricted()
+	{
+		return isset($this['over18']) ? $this['over18'] : false;
+	}
+
 }
 

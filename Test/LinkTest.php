@@ -105,5 +105,16 @@ class LinkTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($expectedAbsolute, $actualAbsolute);
 	}
 
+	/**
+	 * Verifies that Links can tell if they're restricted to those over 18 years
+	 * of age
+	 */
+	public function testKnowsIfAgeRestricted()
+	{
+		$this->assertFalse($this->link->isAgeRestricted());
+		$this->link->setData(array('over18' => true));
+		$this->assertTrue($this->link->isAgeRestricted());
+	}
+
 }
 

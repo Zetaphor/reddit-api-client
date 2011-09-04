@@ -107,5 +107,33 @@ abstract class Entity implements ArrayAccess {
 		$this->data = $data;
 	}
 
+	/**
+	 * Returns the creation timestamp of the entity
+	 *
+	 * This getter method is included a little deeper in the class hierarchy
+	 * because every entity returned by the Reddit API includes this data.
+	 * 
+	 * @access public
+	 * @return integer
+	 */
+	public function getCreated()
+	{
+		return isset($this['created']) ? $this['created'] : null;
+	}
+
+	/**
+	 * Returns the UTC creation timestamp of the entity
+	 *
+	 * This getter method is included a little deeper in the class hierarchy
+	 * because every entity returned by the Reddit API includes this data.
+	 * 
+	 * @access public
+	 * @return integer
+	 */
+	public function getCreatedUtc()
+	{
+		return isset($this['created_utc']) ? $this['created_utc'] : null;
+	}
+
 }
 

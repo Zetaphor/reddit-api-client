@@ -24,25 +24,55 @@ use \RedditApiClient\Entity;
  */
 class EntityTest extends PHPUnit_Framework_TestCase {
 
+	private $entity;
+
+	public function setUp()
+	{
+		$this->entity = new Fake_Entity;
+	}
+
 	/**
 	 * Just checks the ArrayAccess implementation 
 	 */
 	public function testArrayAccess()
 	{
-		$entity = new Fake_Entity;
-		$entity->setData(array('y' => 2));
+		$this->entity = new Fake_Entity;
+		$this->entity->setData(array('y' => 2));
 
-		$this->assertTrue(isset($entity['y']));
-		$this->assertFalse(isset($entity['x']));
+		$this->assertTrue(isset($this->entity['y']));
+		$this->assertFalse(isset($this->entity['x']));
 
-		$entity['x'] = 1;
-		$this->assertEquals(1, $entity['x']);
-		$this->assertTrue(isset($entity['x']));
+		$this->entity['x'] = 1;
+		$this->assertEquals(1, $this->entity['x']);
+		$this->assertTrue(isset($this->entity['x']));
 
-		unset($entity['x']);
-		$this->assertFalse(isset($entity['x']));
+		unset($this->entity['x']);
+		$this->assertFalse(isset($this->entity['x']));
+	}
+
+	/**
+	 * Ensures that Entity returns timestamps in the expected way 
+	 */
+	public function testGetCreated()
+	{
+		$this->assertEquals(null, $this->entity->getCreated());
+
+		$this->entity->setData(array('created' => '1308174144.0'));
+
+		$this->assertEquals(1308174144, $this->entity->getCreated());
 	}
 	
+	/**
+	 * Ensures that Entity returns timestamps in the expected way 
+	 */
+	public function testGetCreatedUtc()
+	{
+		$this->assertEquals(null, $this->entity->getCreatedUtc());
+
+		$this->entity->setData(array('created_utc' => '1308174144.0'));
+
+		$this->assertEquals(1308174144, $this->entity->getCreatedUtc());
+	}
 
 }
 

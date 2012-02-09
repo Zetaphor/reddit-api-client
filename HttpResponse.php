@@ -66,6 +66,16 @@ class HttpResponse {
 	}
 
 	/**
+	 * Returns all response headers
+	 * 
+	 * @return array
+	 */
+	public function getHeaders()
+	{
+		return $this->headers;
+	}
+
+	/**
 	 * Returns the body of the response
 	 * 
 	 * @access public

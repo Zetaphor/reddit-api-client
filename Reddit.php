@@ -77,17 +77,17 @@ class Reddit {
 		$request->setPostVariable('passwd', $password);
 
 		$response = $request->getResponse();
-		$setCookie = $response->getHeader('Set-Cookie');
+		$headers  = $response->getHeaders();
 
-		if (!preg_match('/reddit_session=([^;]+);/', $setCookie, $matches)) {
-			return false;
+
+		foreach ($headers as $header) {
+			if (preg_match('/reddit_session=([^;]+);/', $header, $matches)) {
+				$this->sessionCookie = $matches[1];
+				return true;
+			}
 		}
 
-		$cookie = $matches[1];
-
-		$this->sessionCookie = $cookie;
-
-		return true;
+		return false;
 	}
 
 	/**

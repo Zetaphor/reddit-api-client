@@ -11,7 +11,7 @@ namespace RedditApiClient;
  * @copyright 2011 Henry Smith
  * @license   GPLv2.0
  * @package   Reddit API Client
- * @version   0.50
+ * @version   0.5.1
  */
 class HttpResponse {
 

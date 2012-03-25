@@ -16,7 +16,7 @@ use \RedditApiClient\Account;
  * @license    GPLv2.0
  * @package    Reddit API Client
  * @subpackage Test
- * @version    0.50
+ * @version    0.5.1
  */
 class AccountTest extends PHPUnit_Framework_TestCase {
 

@@ -31,5 +31,11 @@ class RedditException extends Exception {
 	 */
 	const LOGIN_REQUIRED = 2;
 
+	/**
+	 * Denotes that the exception was thrown because an attempt was made to
+	 * load content from a nonexistent subreddit
+	 */
+	const NO_SUCH_SUBREDDIT = 3;
+
 }
 

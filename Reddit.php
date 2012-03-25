@@ -268,6 +268,14 @@ class Reddit {
 
 		$links = array();
 
+		if (!isset($resposne['data']['children'])
+		    || !is_array($response['data']['children'])
+		) {
+			$message = "No such subreddit {$subredditName}";
+			$code    = RedditException::NO_SUCH_SUBREDDIT;
+			throw new RedditException($message, $code);
+		}
+
 		foreach ($response['data']['children'] as $child) {
 
 			$link = new Link($this);

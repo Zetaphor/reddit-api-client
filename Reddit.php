@@ -268,7 +268,7 @@ class Reddit {
 
 		$links = array();
 
-		if (!isset($resposne['data']['children'])
+		if (!isset($response['data']['children'])
 		    || !is_array($response['data']['children'])
 		) {
 			$message = "No such subreddit {$subredditName}";

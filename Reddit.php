@@ -353,12 +353,12 @@ class Reddit {
 		}
 	
 		foreach ($response['jquery'] as $element) {
-
-			if (!isset($element[3][0])) {
+                    
+			if (isset($element[3][0][0])) {
 				continue;
 			}
 
-                        if (strstr($element[3][0], '.error') == true) {
+                        if (strpos($element[3][0], '.error') === false) {
 				return false;
 			}
 		}
@@ -563,7 +563,7 @@ class Reddit {
 		// *Surely* there has to be a better way of detecting that the submission was
 		// rejected than this hackery-dackery-doo
 		foreach ($response['jquery'] as $element) {
-
+                        
 			if (!isset($element[3][0])) {
 				continue;
 			}

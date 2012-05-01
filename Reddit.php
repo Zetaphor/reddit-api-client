@@ -358,7 +358,7 @@ class Reddit {
 				continue;
 			}
 
-			if (strpos($element[3][0], '.error') !== false) {
+                        if (strstr($element[3][0], '.error') == true) {
 				return false;
 			}
 		}

@@ -353,12 +353,12 @@ class Reddit {
 		}
 	
 		foreach ($response['jquery'] as $element) {
-
-			if (!isset($element[3][0])) {
+                    
+			if (isset($element[3][0][0])) {
 				continue;
 			}
 
-			if (strpos($element[3][0], '.error') !== false) {
+                        if (strpos($element[3][0], '.error') === true) {
 				return false;
 			}
 		}
@@ -533,10 +533,10 @@ class Reddit {
 	 * @param  string $subredditName   e.g. 'pics', *not* '/r/pics'
 	 * @param  string $linkType        either 'self' or 'link'
 	 * @param  string $title           The title of the submission
-	 * @param  string $url             Either the URL or the self-text
+	 * @param  string $linkUrl             Either the URL or the self-text
 	 * @return boolean
 	 */
-	public function submit($subredditName, $linkType, $title, $url)
+	public function submit($subredditName, $linkType, $title, $linkUrl)
 	{
 		if (!$this->isLoggedIn()) {
 			$message = 'Cannot submit links without being logged in';
@@ -551,7 +551,7 @@ class Reddit {
 			'kind'  => $linkType,
 			'sr'    => $subredditName,
 			'title' => $title,
-			'url'   => $url,
+			'url'   => $linkUrl,
 		);
 
 		$response = $this->sendRequest($verb, $url, $data);
@@ -559,12 +559,12 @@ class Reddit {
 		if (!is_array($response) || !isset($response['jquery'])) {
 			return false;
 		}
-	
+                
 		// *Surely* there has to be a better way of detecting that the submission was
 		// rejected than this hackery-dackery-doo
 		foreach ($response['jquery'] as $element) {
-
-			if (!isset($element[3][0])) {
+                        
+			if (isset($element[3][1])) {
 				continue;
 			}
 
@@ -572,7 +572,7 @@ class Reddit {
 				return false;
 			}
 
-			if (strpos($element[3][0], "You'll have to wait a while before you can submit again") !== false) {
+			if (strpos($element[3][0], "you are doing that too much") !== false) {
 				return false;
 			}
 		}

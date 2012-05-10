@@ -16,7 +16,7 @@ use \RedditApiClient\Link;
  * @license    GPLv2.0
  * @package    Reddit API Client
  * @subpackage Test
- * @version    0.5.1
+ * @version    0.5.2
  */
 class LinkTest extends PHPUnit_Framework_TestCase {
 

@@ -20,7 +20,7 @@ use \RedditApiClient\Entity;
  * @license    GPLv2.0
  * @package    Reddit API Client
  * @subpackage Test
- * @version    0.5.1
+ * @version    0.5.2
  */
 class EntityTest extends PHPUnit_Framework_TestCase {
 

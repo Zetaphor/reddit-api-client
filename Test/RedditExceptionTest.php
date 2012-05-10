@@ -25,7 +25,7 @@ use \PHPUnit_Framework_TestCase;
  * @uses       \PHPUnit_Framework_TestCase
  * @uses       \RedditApiClient\Reddit
  * @uses       \RedditApiClient\RedditException
- * @version    0.5.1
+ * @version    0.5.2
  */
 class RedditExceptionTest extends PHPUnit_Framework_TestCase {
 

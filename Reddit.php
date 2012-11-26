@@ -69,20 +69,21 @@ class Reddit {
      */
     public function login($username, $password) {
         $request = new HttpRequest;
-        $request->setUrl('http://www.reddit.com/api/login');
+        $request->setUrl('http://www.reddit.com/api/login/' . $username);
         $request->setHttpMethod('POST');
         $request->setPostVariable('user', $username);
         $request->setPostVariable('passwd', $password);
+        $request->setPostVariable('api_type', 'json');
 
         $response = $request->getResponse();
         $headers = $response->getHeaders();
 
+        $body = json_decode($response->getBody());
 
-        foreach ($headers as $header) {
-            if (preg_match('/reddit_session=([^;]+);/', $header, $matches)) {
-                $this->sessionCookie = $matches[1];
-                return true;
-            }
+        if (isset($body->json->data->modhash) && isset($body->json->data->cookie)) {
+            $this->modHash       = $body->json->data->modhash;
+            $this->sessionCookie = $body->json->data->cookie;
+            return true;
         }
 
         return false;

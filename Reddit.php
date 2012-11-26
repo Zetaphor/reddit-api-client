@@ -542,7 +542,6 @@ class Reddit {
         // no matter what, whether the post was successful or not.
         $errors_array = array('.error.SUBREDDIT_NOTALLOWED.field-sr', '.error.RATELIMIT.field-ratelimit', 'you aren\'t allowed to post there.', 'that reddit doesn\'t exist');
 
-        // Check for errors
         foreach ($response['jquery'] as $element) {
 
             if (isset($element[3][1])) {
@@ -551,11 +550,9 @@ class Reddit {
 
             foreach ($element[3] as $value) {
 
-                //We use implode to join keys together to create a string
                 $error = implode(" ", $errors_array);
 
-                //Find if any errors occured
-                if (strpos($error, $value)) {
+                if ($value && strpos($error, $value)) {
                     return false;
                 }
             }

@@ -2,14 +2,6 @@
 
 namespace RedditApiClient;
 
-require_once 'Account.php';
-require_once 'Comment.php';
-require_once 'HttpRequest.php';
-require_once 'HttpResponse.php';
-require_once 'Link.php';
-require_once 'RedditException.php';
-require_once 'Subreddit.php';
-
 /**
  * Reddit 
  *

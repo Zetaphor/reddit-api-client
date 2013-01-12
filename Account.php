@@ -2,8 +2,6 @@
 
 namespace RedditApiClient;
 
-require_once 'Entity.php';
-
 /**
  * Account 
  *

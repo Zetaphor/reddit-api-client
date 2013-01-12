@@ -1,0 +1,5 @@
+{
+  "require": {
+    "instaclick/php-code-sniffer": "dev-master"
+  }
+}

@@ -1,5 +1,5 @@
 {
   "require": {
-    "instaclick/php-code-sniffer": "dev-master"
+    "squizlabs/php_codesniffer": "1.*"
   }
 }

@@ -1,54 +1,31 @@
 {
-    "hash": "ab2b43e054b71f31ed957f92c10cb00e",
+    "hash": "804b851b32c8cfae9778bff08d38cdde",
     "packages": [
         {
-            "name": "instaclick/php-code-sniffer",
-            "version": "dev-master",
+            "name": "squizlabs/php_codesniffer",
+            "version": "1.4.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/instaclick/PHP_CodeSniffer",
-                "reference": "4cab7ffbac5df3f495797dbbb6321545f6ab8cde"
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer",
+                "reference": "1.4.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/instaclick/PHP_CodeSniffer/archive/4cab7ffbac5df3f495797dbbb6321545f6ab8cde.zip",
-                "reference": "4cab7ffbac5df3f495797dbbb6321545f6ab8cde",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer/archive/1.4.3.zip",
+                "reference": "1.4.3",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.1.2"
             },
-            "time": "2013-01-04 16:10:29",
+            "time": "2012-12-04 03:15:31",
             "bin": [
                 "scripts/phpcs"
             ],
             "type": "library",
             "autoload": {
                 "classmap": [
-                    "CodeSniffer.php",
-                    "CodeSniffer/CLI.php",
-                    "CodeSniffer/Exception.php",
-                    "CodeSniffer/File.php",
-                    "CodeSniffer/MultiFileSniff.php",
-                    "CodeSniffer/Reporting.php",
-                    "CodeSniffer/Report.php",
-                    "CodeSniffer/Sniff.php",
-                    "CodeSniffer/Tokens.php",
-                    "CodeSniffer/Reports/",
-                    "CodeSniffer/CommentParser/",
-                    "CodeSniffer/Tokenizers/",
-                    "CodeSniffer/DocGenerators/",
-                    "CodeSniffer/Standards/AbstractPatternSniff.php",
-                    "CodeSniffer/Standards/AbstractScopeSniff.php",
-                    "CodeSniffer/Standards/AbstractVariableSniff.php",
-                    "CodeSniffer/Standards/IncorrectPatternException.php",
-                    "CodeSniffer/Standards/Generic/Sniffs/",
-                    "CodeSniffer/Standards/MySource/Sniffs/",
-                    "CodeSniffer/Standards/PEAR/Sniffs/",
-                    "CodeSniffer/Standards/PSR1/Sniffs/",
-                    "CodeSniffer/Standards/PSR2/Sniffs/",
-                    "CodeSniffer/Standards/Squiz/Sniffs/",
-                    "CodeSniffer/Standards/Zend/Sniffs/"
+                    "."
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -57,12 +34,12 @@
             ],
             "authors": [
                 {
-                    "name": "Instaclick",
-                    "role": "fork maintainer"
+                    "name": "Greg Sherwood",
+                    "role": "lead"
                 }
             ],
-            "description": "(fork) PHP_CodeSniffer tokenises PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
-            "homepage": "http://instaclick.com",
+            "description": "PHP_CodeSniffer tokenises PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "http://www.squizlabs.com/php-codesniffer",
             "keywords": [
                 "standards",
                 "phpcs"
@@ -74,7 +51,7 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "instaclick/php-code-sniffer": 20
-    }
+    "stability-flags": [
+
+    ]
 }

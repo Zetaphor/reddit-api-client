@@ -1,7 +1,33 @@
 {
+
+  "name": "h2s/reddit-api-client",
+  "description": "Provides an interface to the API at reddit.com",
+  "keywords": [
+    "reddit",
+    "api",
+    "client"
+  ],
+
+  "license": "GPLv2",
+  "authors": [
+    {
+      "name": "Henry Smith",
+      "email": "henry@henrysmith.org",
+      "homepage": "http://henrysmith.org"
+    }
+  ],
+
+  "autoload": {
+    "psr-0": {
+      "RedditApiClient": ""
+    }
+  },
+
+
   "require-dev": {
     "mockery/mockery": "dev-master",
     "phpunit/phpunit": "3.7.*@dev",
     "squizlabs/php_codesniffer": "1.*"
   }
+
 }

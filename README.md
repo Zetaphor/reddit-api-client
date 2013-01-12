@@ -37,20 +37,12 @@ For more details of how to use this library, [see the Wiki](https://github.com/h
 Installation
 ------------
 
-I haven't packaged this up in any way whatsoever yet. If you want to use it,
-just download the code and require_once Reddit.php
+This project is packaged with [Composer](http://getcomposer.org/). Add the
+following the the `require` section of your project's `composer.json`:
 
-The code has all been written on a MacBook using PHP 5.3.6. It should work fine
-on other operating systems but I'm using namespaces so anything less than 5.3
-is no good.
+    "h2s/reddit-api-client": "dev-master"
 
-I've been burned too many times writing code that relied on the prescence of
-either cURL or pecl_http, only to find out that they weren't available and
-never would be in the production environment. This library has its own
-little implementations of HttpRequest and HttpResponse to save you from the
-usual "Hey this API client looks like it might work oh wait it depends on cURL
-never mind" bullshit.
-
+After that just run `php composer.phar update` and you're good to go!
 
 Development Status
 ------------------

@@ -1,5 +1,7 @@
-Introduction
-------------
+Reddit API Client
+=================
+
+[![Build Status](https://secure.travis-ci.org/h2s/reddit-api-client.png)](http://travis-ci.org/h2s/reddit-api-client)
 
 This is a PHP Reddit API client.
 

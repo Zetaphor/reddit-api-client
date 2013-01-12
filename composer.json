@@ -1,5 +1,5 @@
 {
-  "require": {
+  "require-dev": {
     "squizlabs/php_codesniffer": "1.*"
   }
 }

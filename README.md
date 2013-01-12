@@ -10,10 +10,9 @@ As a quick taster, here's some sample code:
 
     <?php
     
-    require_once 'RedditApiClient/Reddit.php';
-    use \RedditApiClient\Reddit;
-    
-    $reddit = new Reddit;
+    require 'vendor/autoload.php';
+
+    $reddit = new RedditApiClient\Reddit;
     $links  = $reddit->getLinksBySubreddit('botcirclejerk');
     
     foreach ($links as $link) {
@@ -70,23 +69,18 @@ link in /r/programming
 
     <?php
     
-    require_once 'Reddit/Reddit.php';
-    use \RedditApiClient\Reddit;
+    require_once 'vendor/autoload';
     
-    
-    $reddit   = new Reddit;
+    $reddit   = new RedditApiClient\Reddit;
     $proggit  = $reddit->getLinksBySubreddit('programming');
     $topLink  = $proggit[0];
     $comments = $topLink->getComments();
     
-    
     echo $topLink->getTitle(), "\n\n";
-    
     
     foreach ($comments as $comment) {
     	showComment($comment);
     }
-    
     
     function showComment($comment, $level = 1)
     {
@@ -121,6 +115,30 @@ And here's the output:
                     
 
     [truncated]
+
+Contributing
+------------
+
+This is a fairly simple project so there aren't many guidelines. I've you've
+fixed a bug or added a feature let's get it merged back in. There are only two
+rules:
+
+#### 1. Run the tests
+
+    $ ./vendor/bin/phpunit
+
+Please make sure the tests pass before submitting a pull request. Ideally, your
+pull request should include one or more new tests for the bug fix or new
+functionality you're introducing.
+
+#### 2. Follow the PSR-2 style guide
+
+    $ ./vendor/bin/phpcs --standard=PSR2 src/
+
+This project complies with the
+[PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
+standard. Your pull request is probably already within these guidelines but it's
+good to double check.
 
 License
 -------

@@ -1,9 +1,65 @@
 {
-    "hash": "26f15bb7196ff7da0a2fb43739d0b5a0",
+    "hash": "504ba3782384211ad5ed487463969cf5",
     "packages": [
 
     ],
     "packages-dev": [
+        {
+            "name": "mockery/mockery",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git://github.com/padraic/mockery.git",
+                "reference": "896cddd26190530931a2649a701a01fd5358d650"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/padraic/mockery/archive/896cddd26190530931a2649a701a01fd5358d650.zip",
+                "reference": "896cddd26190530931a2649a701a01fd5358d650",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "hamcrest/hamcrest": "1.1.0"
+            },
+            "suggest": {
+                "Hamcrest": "1.0.0"
+            },
+            "time": "2013-01-11 12:37:28",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Mockery": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Pádraic Brady",
+                    "email": "padraic.brady@gmail.com",
+                    "homepage": "http://blog.astrumfutura.com"
+                }
+            ],
+            "description": "Mockery is a simple yet flexible PHP mock object framework for use in unit testing with PHPUnit, PHPSpec or any other testing framework. Its core goal is to offer a test double framework with a succint API capable of clearly defining all possible object operations and interactions using a human readable Domain Specific Language (DSL). Designed as a drop in alternative to PHPUnit's phpunit-mock-objects library, Mockery is easy to integrate with PHPUnit and can operate alongside phpunit-mock-objects without the World ending.",
+            "homepage": "http://github.com/padraic/mockery",
+            "keywords": [
+                "testing",
+                "library",
+                "BDD",
+                "TDD",
+                "test",
+                "mockery",
+                "mock",
+                "stub",
+                "test double",
+                "mock objects"
+            ]
+        },
         {
             "name": "phpunit/php-code-coverage",
             "version": "1.2.7",
@@ -447,6 +503,7 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
+        "mockery/mockery": 20,
         "phpunit/phpunit": 20
     }
 }

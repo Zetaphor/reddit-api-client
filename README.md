@@ -43,7 +43,9 @@ following the the `require` section of your project's `composer.json`:
 
     "h2s/reddit-api-client": "dev-master"
 
-After that just run `php composer.phar update` and you're good to go!
+After that just run `php composer.phar update` and you're good to go! If you
+have any trouble, or want more detail, I've set up working example "[Reddit
+Console](https://github.com/h2s/reddit-console)" project for reference purposes.
 
 Development Status
 ------------------

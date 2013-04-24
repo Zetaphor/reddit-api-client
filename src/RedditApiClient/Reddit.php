@@ -249,10 +249,10 @@ class Reddit
      * @param  string $subredditName  Plain-text name
      * @return array
      */
-    public function getLinksBySubreddit($subredditName)
+    public function getLinksBySubreddit($subredditName, $limit=25)
     {
         $verb = 'GET';
-        $url = "http://www.reddit.com/r/{$subredditName}.json";
+        $url = "http://www.reddit.com/r/{$subredditName}.json?limit={$limit}";
 
         $response = $this->sendRequest($verb, $url);
 

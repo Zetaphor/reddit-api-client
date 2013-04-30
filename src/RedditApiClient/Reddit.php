@@ -247,6 +247,7 @@ class Reddit
      *
      * @access public
      * @param  string $subredditName  Plain-text name
+     * @param  integer $limit         [optional] Maximum number of links
      * @return array
      */
     public function getLinksBySubreddit($subredditName, $limit=25)

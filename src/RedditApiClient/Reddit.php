@@ -555,6 +555,8 @@ class Reddit
             '.error.RATELIMIT.field-ratelimit',
             'you aren\'t allowed to post there.',
             'that reddit doesn\'t exist',
+			'care to try these again?',
+			'a url is required',
         );
 
         foreach ($response['jquery'] as $element) {

@@ -2,6 +2,7 @@ Reddit API Client
 =================
 
 [![Build Status](https://secure.travis-ci.org/h2s/reddit-api-client.png)](http://travis-ci.org/h2s/reddit-api-client)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/h2s/reddit-api-client/badges/quality-score.png?s=7f14544827eccb99214c30e2f71904b527941a96)](https://scrutinizer-ci.com/g/h2s/reddit-api-client/)
 
 This is a PHP Reddit API client.
 

@@ -9,6 +9,14 @@ class ClientFactory
 {
 	public function createClient(array $config = array())
 	{
+		$client = new Client(null, $this->createConfig($config));
+		$this->injectDescription($client);
+		return $client;
+	}
+
+	private function createConfig($config)
+	{
+		$client = $this->createConfig($config);
 		$required = array(
 			'base_url',
 		);
@@ -18,9 +26,7 @@ class ClientFactory
 		);
 
 		$config = Collection::fromConfig($config, $defaults, $required);
-		$client = new Client(null, $config);
-		$this->injectDescription($client);
-		return $client;
+		return $config;
 	}
 
 	private function injectDescription($client)

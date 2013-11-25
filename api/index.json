@@ -4,7 +4,7 @@
     "operations": {
       "Vote": {
         "httpMethod": "POST",
-        "uri": "vote",
+        "uri": "/api/vote",
         "summary": "Cast a vote on a thing",
         "parameters": {
           "id": {

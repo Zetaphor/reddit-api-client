@@ -21,7 +21,7 @@ class ClientFactory
 		);
 
 		$defaults = array(
-			'base_url' => 'http://www.reddit.com/api',
+			'base_url' => 'http://www.reddit.com',
 		);
 
 		$config = Collection::fromConfig($config, $defaults, $required);

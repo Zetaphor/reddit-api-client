@@ -9,7 +9,8 @@ class ClientFactory
 {
 	public function createClient(array $config = array())
 	{
-		$client = new Client(null, $this->createConfig($config));
+		$config = $this->createConfig($config);
+		$client = new Client($config->get('base_url'), $config);
 		$this->injectDescription($client);
 		return $client;
 	}

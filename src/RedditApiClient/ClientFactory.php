@@ -7,6 +7,14 @@ use Guzzle\Service\Description\ServiceDescription;
 
 class ClientFactory
 {
+	private $defaultConfigOptions = array(
+		'base_url' => 'http://www.reddit.com/',
+	);
+
+	private $requiredConfigOptions = array(
+		'base_url',
+	);
+
 	public function createClient(array $config = array())
 	{
 		$config = $this->createConfig($config);
@@ -17,15 +25,11 @@ class ClientFactory
 
 	private function createConfig($config)
 	{
-		$required = array(
-			'base_url',
+		$config = Collection::fromConfig(
+			$config,
+			$this->defaultConfigOptions,
+			$this->requiredConfigOptions
 		);
-
-		$defaults = array(
-			'base_url' => 'http://www.reddit.com',
-		);
-
-		$config = Collection::fromConfig($config, $defaults, $required);
 		return $config;
 	}
 

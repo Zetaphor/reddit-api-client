@@ -9,8 +9,18 @@ class ClientFactory
 	public function createClient()
 	{
 		$client = new Client;
-		$description = new ServiceDescription;
-		$client->setDescription($description);
+		$this->injectDescription($client);
 		return $client;
+	}
+
+	private function injectDescription($client)
+	{
+		$client->setDescription($this->createDescription());
+	}
+
+	private function createDescription()
+	{
+		$description = new ServiceDescription;
+		return $description;
 	}
 }

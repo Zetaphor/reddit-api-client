@@ -1,14 +1,24 @@
 <?php
 namespace RedditApiClient;
 
+use Guzzle\Common\Collection;
 use Guzzle\Service\Client;
 use Guzzle\Service\Description\ServiceDescription;
 
 class ClientFactory
 {
-	public function createClient()
+	public function createClient(array $config = array())
 	{
-		$client = new Client;
+		$required = array(
+			'base_url',
+		);
+
+		$defaults = array(
+			'base_url' => 'http://www.reddit.com/api',
+		);
+
+		$config = Collection::fromConfig($config, $defaults, $required);
+		$client = new Client(null, $config);
 		$this->injectDescription($client);
 		return $client;
 	}

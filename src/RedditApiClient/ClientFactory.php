@@ -20,7 +20,8 @@ class ClientFactory
 
 	private function createDescription()
 	{
-		$description = new ServiceDescription;
+		$descriptionPath = realpath(__DIR__ . '/../../api/index.json');
+		$description = ServiceDescription::factory($descriptionPath);
 		return $description;
 	}
 }

@@ -34,4 +34,14 @@ class ClientFactoryTest extends PHPUnit_Framework_TestCase
 		$description = $client->getDescription();
 		$this->assertTrue($description instanceof ServiceDescription);
 	}
+
+	/**
+	 * @test
+	 */
+	public function loadsServiceDescription()
+	{
+		$client = $this->factory->createClient();
+		$description = $client->getDescription();
+		$this->assertEquals("Reddit API Client", $description->getName());
+	}
 }

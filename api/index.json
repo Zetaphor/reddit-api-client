@@ -14,12 +14,20 @@
             "location": "query",
             "description": "Tell the API to return JSON",
             "required": true,
+            "type": "string",
             "value": "json"
           },
           "user": {
             "location": "uri",
-            "description": "Username to login",
-            "required": true
+            "description": "The username to authenticate as.",
+            "required": true,
+            "type": "string"
+          },
+          "passwd": {
+            "location": "query",
+            "description": "The plain-text password for the account. ",
+            "required": true,
+            "type": "string"
           }
         }
       },

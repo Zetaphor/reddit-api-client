@@ -21,7 +21,7 @@ use \RedditApiClient\Reddit;
 class Stub_RedditNoRequests extends Reddit
 {
 
-    public function login()
+    public function login($username, $password)
     {
         return false;
     }

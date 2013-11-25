@@ -16,7 +16,6 @@ class ClientFactory
 
 	private function createConfig($config)
 	{
-		$client = $this->createConfig($config);
 		$required = array(
 			'base_url',
 		);

@@ -1,3 +1,23 @@
 {
-    "name" : "Reddit API Client"
+    "name" : "Reddit API Client",
+
+    "operations": {
+      "Vote": {
+        "httpMethod": "POST",
+        "uri": "vote",
+        "summary": "Cast a vote on a thing",
+        "parameters": {
+          "id": {
+            "location": "body",
+            "description": "The fullname of the thing you are voting for.",
+            "required": true
+          },
+          "dir": {
+            "location": "body",
+            "description": "The vote you are going to cast. Use 1 to vote up, 0 to rescind a vote, or -1 to vote down. Note that previous votes are not additive. If the user previously voted 1, voting -1 will change the vote to -1, not 0. Accepted values: -1 (downvote), 0 (neutral-vote), 1 (upvote) ",
+            "required": true
+          }
+        }
+      }
+    }
 }

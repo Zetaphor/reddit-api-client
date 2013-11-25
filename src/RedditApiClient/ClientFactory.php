@@ -2,8 +2,8 @@
 namespace RedditApiClient;
 
 use Guzzle\Common\Collection;
-use Guzzle\Service\Client;
 use Guzzle\Service\Description\ServiceDescription;
+use RedditApiClient\Client;
 
 class ClientFactory
 {

@@ -1,10 +1,9 @@
 <?php
 namespace RedditApiClient\Test;
 
-use Guzzle\Common\Collection;
-use Guzzle\Service\Client;
 use Guzzle\Service\Description\ServiceDescription;
 use PHPUnit_Framework_TestCase;
+use RedditApiClient\Client;
 use RedditApiClient\ClientFactory;
 
 class ClientFactoryTest extends PHPUnit_Framework_TestCase

@@ -11,7 +11,7 @@ As a quick taster, here's some sample code:
 
 ```php
 <?php
-require 'vendor/autoload.php;
+require 'vendor/autoload.php';
 
 $clientFactory = new RedditApiClient\ClientFactory;
 $client = $clientFactory->createClient();

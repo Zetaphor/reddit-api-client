@@ -18,7 +18,7 @@
             "value": "json"
           },
           "user": {
-            "location": "uri",
+            "location": "query",
             "description": "The username to authenticate as.",
             "required": true,
             "type": "string"

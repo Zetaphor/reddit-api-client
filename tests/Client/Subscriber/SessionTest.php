@@ -11,6 +11,7 @@ class SessionTest extends PHPUnit_Framework_TestCase
 	private $session;
 	private $event;
 	private $request;
+	private $params;
 
 	public function setUp()
 	{
@@ -19,6 +20,7 @@ class SessionTest extends PHPUnit_Framework_TestCase
 		$this->event = new Event;
 		$this->request = m::mock('Guzzle\Http\Message\Request');
 		$this->response = m::mock('Guzzle\Http\Message\Response');
+		$this->params = m::mock('Guzzle\Common\Collection');
 		$this->event['request'] = $this->request;
 		$this->event['response'] = $this->response;
 	}
@@ -28,6 +30,18 @@ class SessionTest extends PHPUnit_Framework_TestCase
 	 */
 	public function onRequestBeforeSend()
 	{
+		$this->session->setModHash('asdf');
+
+		$this->request
+			->shouldReceive('getParams')
+			->andReturn($this->params)
+			->once();
+
+		$this->params
+			->shouldReceive('set')
+			->with('uh', 'asdf')
+			->once();
+
 		$this->session->onRequestBeforeSend($this->event);
 	}
 

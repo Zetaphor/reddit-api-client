@@ -8,6 +8,11 @@ class Session implements EventSubscriberInterface
 {
 	private $modhash;
 
+	public function setModHash($modHash)
+	{
+		$this->modHash = $modHash;
+	}
+
 	public function getModHash()
 	{
 		return $this->modHash;
@@ -26,6 +31,8 @@ class Session implements EventSubscriberInterface
 		$request = $event['request'];
 
 		if (isset($this->modHash)) {
+			$params = $request->getParams();
+			$params->set('uh', $this->modHash);
 		}
 	}
 

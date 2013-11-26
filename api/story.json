@@ -1,6 +1,44 @@
 {
   "operations": {
 
+    "Submit": {
+      "httpMethod": "POST",
+      "uri": "/api/submit",
+      "summary": "Submit a new story",
+      "parameters": {
+        "url": {
+          "location": "query",
+          "description": "The link to submit, if the 'kind' is 'link'",
+          "required": false,
+          "type": "string"
+        },
+        "text": {
+          "location": "query",
+          "description": "The text to submit, if the 'kind' is 'self'",
+          "required": false,
+          "type": "string"
+        },
+        "kind": {
+          "location": "query",
+          "description": "Either 'link' or 'self'",
+          "required": true,
+          "type": "string"
+        },
+        "sr": {
+          "location": "query",
+          "description": "The subreddit to submit the story to",
+          "required": true,
+          "type": "string"
+        },
+        "title": {
+          "location": "query",
+          "description": "The title text for the story",
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+
     "Vote": {
       "httpMethod": "POST",
       "uri": "/api/vote",

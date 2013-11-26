@@ -4,7 +4,7 @@ namespace RedditApiClient;
 use Guzzle\Common\Collection;
 use Guzzle\Service\Description\ServiceDescription;
 use RedditApiClient\Client;
-use RedditApiClient\Client\Subscriber;
+use RedditApiClient\Session;
 
 class ClientFactory
 {
@@ -49,7 +49,7 @@ class ClientFactory
 
 	private function injectSessionSubscriber($client)
 	{
-		$sessionSubscriber = new Subscriber\Session;
+		$sessionSubscriber = new Session\Subscriber;
 		$client->addSubscriber($sessionSubscriber);
 	}
 }

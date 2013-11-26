@@ -1,12 +1,12 @@
 <?php
-namespace RedditApiClient\Test\Client\Subscriber;
+namespace RedditApiClient\Test\Session;
 
 use Guzzle\Common\Event;
 use Mockery as m;
 use PHPUnit_Framework_TestCase;
-use RedditApiClient\Client\Subscriber\Session;
+use RedditApiClient\Session;
 
-class SessionTest extends PHPUnit_Framework_TestCase
+class SubscriberTest extends PHPUnit_Framework_TestCase
 {
 	private $session;
 	private $event;
@@ -16,7 +16,7 @@ class SessionTest extends PHPUnit_Framework_TestCase
 	public function setUp()
 	{
 		parent::setUp();
-		$this->session = new Session;
+		$this->session = new Session\Subscriber;
 		$this->event = new Event;
 		$this->request = m::mock('Guzzle\Http\Message\Request');
 		$this->response = m::mock('Guzzle\Http\Message\Response');

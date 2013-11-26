@@ -1,10 +1,10 @@
 <?php
-namespace RedditApiClient\Client\Subscriber;
+namespace RedditApiClient\Session;
 
 use Guzzle\Common\Event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-class Session implements EventSubscriberInterface
+class Subscriber implements EventSubscriberInterface
 {
 	private $modhash;
 
@@ -18,7 +18,7 @@ class Session implements EventSubscriberInterface
 		return $this->modHash;
 	}
 
-    public static function getSubscribedEvents()
+	public static function getSubscribedEvents()
 	{
 		return array(
 			'request.before_send' => array('onRequestBeforeSend', 255),
@@ -57,3 +57,4 @@ class Session implements EventSubscriberInterface
 		return isset($body->json->data->modhash);
 	}
 }
+

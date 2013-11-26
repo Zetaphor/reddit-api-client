@@ -10,11 +10,15 @@ class Session implements EventSubscriberInterface
 	{
 		return array(
 			'request.before_send' => array('onRequestBeforeSend', 255),
+			'request.sent' => array('onRequestAfterSend', 255),
 		);
 	}
 
 	public function onRequestBeforeSend(Event $event)
 	{
-		$curlOptions = $event['request']->getCurlOptions();
+	}
+
+	public function onRequestAfterSend(Event $event)
+	{
 	}
 }

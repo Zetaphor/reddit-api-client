@@ -18,7 +18,9 @@ class SessionTest extends PHPUnit_Framework_TestCase
 		$this->session = new Session;
 		$this->event = new Event;
 		$this->request = m::mock('Guzzle\Http\Message\Request');
+		$this->response = m::mock('Guzzle\Http\Message\Response');
 		$this->event['request'] = $this->request;
+		$this->event['response'] = $this->response;
 	}
 
 	/**
@@ -26,9 +28,14 @@ class SessionTest extends PHPUnit_Framework_TestCase
 	 */
 	public function onRequestBeforeSend()
 	{
-		$this->request
-			->shouldReceive('getCurlOptions')
-			->once();
 		$this->session->onRequestBeforeSend($this->event);
+	}
+
+	/**
+	 * @test
+	 */
+	public function onRequestAfterSend()
+	{
+		$this->session->onRequestAfterSend($this->event);
 	}
 }

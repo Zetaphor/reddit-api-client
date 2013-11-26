@@ -4,6 +4,7 @@ namespace RedditApiClient;
 use Guzzle\Common\Collection;
 use Guzzle\Service\Description\ServiceDescription;
 use RedditApiClient\Client;
+use RedditApiClient\Client\Subscriber;
 
 class ClientFactory
 {
@@ -20,6 +21,7 @@ class ClientFactory
 		$config = $this->createConfig($config);
 		$client = new Client($config->get('base_url'), $config);
 		$this->injectDescription($client);
+		$this->injectSessionSubscriber($client);
 		return $client;
 	}
 
@@ -43,5 +45,11 @@ class ClientFactory
 		$descriptionPath = realpath(__DIR__ . '/../../api/index.json');
 		$description = ServiceDescription::factory($descriptionPath);
 		return $description;
+	}
+
+	private function injectSessionSubscriber($client)
+	{
+		$sessionSubscriber = new Subscriber\Session;
+		$client->addSubscriber($sessionSubscriber);
 	}
 }

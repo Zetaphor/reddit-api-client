@@ -1,0 +1,38 @@
+{
+  "operations": {
+
+    "Login": {
+      "httpMethod": "POST",
+      "uri": "api/login/{user}",
+      "summary": "Cast a vote on a thing",
+      "parameters": {
+        "api_type": {
+          "location": "query",
+          "description": "Tell the API to return JSON",
+          "required": true,
+          "type": "string",
+          "value": "json"
+        },
+        "user": {
+          "location": "query",
+          "description": "The username to authenticate as.",
+          "required": true,
+          "type": "string"
+        },
+        "passwd": {
+          "location": "query",
+          "description": "The plain-text password for the account. ",
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+
+    "Me": {
+      "httpMethod": "GET",
+      "uri": "api/me.json",
+      "summary": "Retrieve information about logged-in user"
+    }
+
+  }
+}

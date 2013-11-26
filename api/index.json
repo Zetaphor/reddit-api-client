@@ -1,59 +1,9 @@
 {
-    "name" : "Reddit API Client",
-
+    "name": "Reddit API Client",
     "base_url": "http://reddit.com",
 
-    "operations": {
-
-      "Login": {
-        "httpMethod": "POST",
-        "uri": "api/login/{user}",
-        "summary": "Cast a vote on a thing",
-        "parameters": {
-          "api_type": {
-            "location": "query",
-            "description": "Tell the API to return JSON",
-            "required": true,
-            "type": "string",
-            "value": "json"
-          },
-          "user": {
-            "location": "query",
-            "description": "The username to authenticate as.",
-            "required": true,
-            "type": "string"
-          },
-          "passwd": {
-            "location": "query",
-            "description": "The plain-text password for the account. ",
-            "required": true,
-            "type": "string"
-          }
-        }
-      },
-
-      "Me": {
-        "httpMethod": "GET",
-        "uri": "api/me.json",
-        "summary": "Retrieve information about logged-in user"
-      },
-
-      "Vote": {
-        "httpMethod": "POST",
-        "uri": "/api/vote",
-        "summary": "Cast a vote on a thing",
-        "parameters": {
-          "id": {
-            "location": "body",
-            "description": "The fullname of the thing you are voting for.",
-            "required": true
-          },
-          "dir": {
-            "location": "body",
-            "description": "The vote you are going to cast. Use 1 to vote up, 0 to rescind a vote, or -1 to vote down. Note that previous votes are not additive. If the user previously voted 1, voting -1 will change the vote to -1, not 0. Accepted values: -1 (downvote), 0 (neutral-vote), 1 (upvote) ",
-            "required": true
-          }
-        }
-      }
-    }
+    "includes": [
+      "story.json",
+      "user.json"
+    ]
 }

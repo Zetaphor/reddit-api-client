@@ -17,7 +17,6 @@ class SessionTest extends PHPUnit_Framework_TestCase
 		parent::setUp();
 		$this->session = new Session;
 		$this->event = new Event;
-		$this->client = m::mock('RedditApiClient\Client');
 		$this->request = m::mock('Guzzle\Http\Message\Request');
 		$this->response = m::mock('Guzzle\Http\Message\Response');
 		$this->event['request'] = $this->request;
@@ -56,16 +55,8 @@ class SessionTest extends PHPUnit_Framework_TestCase
 			')
 			->once();
 
-		$this->request
-			->shouldReceive('getClient')
-			->andReturn($this->client)
-			->once();
-
-		$this->client
-			->shouldReceive('setModHash')
-			->with('e17aznbup819e98e407734a18ef5a38e4b808dcd3c307ae919')
-			->once();
-
 		$this->session->onRequestAfterSend($this->event);
+
+		$this->assertEquals('e17aznbup819e98e407734a18ef5a38e4b808dcd3c307ae919', $this->session->getModHash());
 	}
 }

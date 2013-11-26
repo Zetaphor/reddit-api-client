@@ -15,7 +15,7 @@ class ChainTest extends PHPUnit_Framework_TestCase
 	public function setUp()
 	{
 		parent::setUp();
-		$this->session = new Session('exampleuser', 'swordfish');
+		$this->session = new Session('exampleuser', 'swordfish', 'poiu');
 		$this->firstImplementation = m::mock('RedditApiClient\Session\Storage');
 		$this->secondImplementation = m::mock('RedditApiClient\Session\Storage');
 		$this->chain = new Session\Storage\Chain(

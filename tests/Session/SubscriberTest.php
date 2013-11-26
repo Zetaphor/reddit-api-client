@@ -19,7 +19,7 @@ class SubscriberTest extends PHPUnit_Framework_TestCase
 		parent::setUp();
 		$this->storage = m::mock('RedditApiClient\Session\Storage');
 		$this->subscriber = new Session\Subscriber($this->storage, 'example');
-		$this->session = new Session('example', 'swordfish');
+		$this->session = new Session('example', 'swordfish', 'poiu');
 		$this->event = new Event;
 		$this->request = m::mock('Guzzle\Http\Message\Request');
 		$this->response = m::mock('Guzzle\Http\Message\Response');
@@ -40,13 +40,8 @@ class SubscriberTest extends PHPUnit_Framework_TestCase
 			->once();
 
 		$this->request
-			->shouldReceive('getParams')
-			->andReturn($this->params)
-			->once();
-
-		$this->params
-			->shouldReceive('set')
-			->with('uh', 'swordfish')
+			->shouldReceive('addCookie')
+			->with('reddit_session', 'poiu')
 			->once();
 
 		$this->subscriber->onRequestBeforeSend($this->event);
@@ -64,7 +59,7 @@ class SubscriberTest extends PHPUnit_Framework_TestCase
 
 		$this->request
 			->shouldReceive('getQuery')
-			->andReturn(array('username' => 'example'))
+			->andReturn(array('user' => 'example'))
 			->once();
 
 		$this->response

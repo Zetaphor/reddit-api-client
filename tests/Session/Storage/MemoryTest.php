@@ -14,7 +14,7 @@ class MemoryTest extends PHPUnit_Framework_TestCase
 	{
 		parent::setUp();
 		$this->memory = new Session\Storage\Memory;
-		$this->session = new Session('exampleuser', 'swordfish');
+		$this->session = new Session('exampleuser', 'swordfish', 'poiu');
 	}
 
 	/**

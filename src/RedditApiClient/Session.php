@@ -5,11 +5,13 @@ class Session
 {
 	private $username;
 	private $modhash;
+	private $cookie;
 
-	public function __construct($username, $modhash)
+	public function __construct($username, $modhash, $cookie)
 	{
 		$this->username = $username;
 		$this->modhash = $modhash;
+		$this->cookie = $cookie;
 	}
 
 	public function getUsername()
@@ -20,5 +22,10 @@ class Session
 	public function getModhash()
 	{
 		return $this->modhash;
+	}
+
+	public function getCookie()
+	{
+		return $this->cookie;
 	}
 }

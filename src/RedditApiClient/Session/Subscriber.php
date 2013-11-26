@@ -29,9 +29,9 @@ class Subscriber implements EventSubscriberInterface
 		$request = $event['request'];
 		if (isset($this->username)) {
 			$session = $this->storage->retrieveSession($this->username);
+			var_dump($session);
 			if ($session instanceof Session) {
-				$params = $request->getParams();
-				$params->set('uh', $session->getModhash());
+				$request->addCookie('reddit_session', $session->getCookie());
 			}
 		}
 	}
@@ -50,9 +50,11 @@ class Subscriber implements EventSubscriberInterface
 	{
 		$body = json_decode($response->getBody());
 		if ($this->isSuccessfulLogin($body)) {
+			$this->username = $username;
 			$session = new Session(
 				$username,
-				$body->json->data->modhash
+				$body->json->data->modhash,
+				$body->json->data->cookie
 			);
 			$this->storage->storeSession($session);
 		}

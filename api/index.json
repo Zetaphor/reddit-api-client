@@ -32,6 +32,12 @@
         }
       },
 
+      "Me": {
+        "httpMethod": "GET",
+        "uri": "api/me.json",
+        "summary": "Retrieve information about logged-in user"
+      },
+
       "Vote": {
         "httpMethod": "POST",
         "uri": "/api/vote",

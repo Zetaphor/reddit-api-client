@@ -62,6 +62,11 @@ class SubscriberTest extends PHPUnit_Framework_TestCase
 			->andReturn('/api/login/asdfg')
 			->once();
 
+		$this->request
+			->shouldReceive('getQuery')
+			->andReturn(array('username' => 'example'))
+			->once();
+
 		$this->response
 			->shouldReceive('getBody')
 			->andReturn('{

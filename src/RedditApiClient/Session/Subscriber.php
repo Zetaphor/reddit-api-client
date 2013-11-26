@@ -39,8 +39,9 @@ class Subscriber implements EventSubscriberInterface
 	public function onRequestAfterSend(Event $event)
 	{
 		$request = $event['request'];
-		if (preg_match('#^/api/login/([^?]+)#', $request->getPath(), $matches)) {
-			$username = $matches[1];
+		if (preg_match('#^/api/login#', $request->getPath())) {
+			$query = $request->getQuery();
+			$username = $query['user'];
 			$this->updateSession($username, $event['response']);
 		}
 	}

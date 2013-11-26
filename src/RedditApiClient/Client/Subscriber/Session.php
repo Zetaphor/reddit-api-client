@@ -29,8 +29,13 @@ class Session implements EventSubscriberInterface
 	private function updateSession($response, $client)
 	{
 		$body = json_decode($response->getBody());
-		if (isset($body->json->data->modhash)) {
+		if ($this->isSuccessfulLogin($body)) {
 			$client->setModHash($body->json->data->modhash);
 		}
+	}
+
+	private function isSuccessfulLogin($body)
+	{
+		return isset($body->json->data->modhash);
 	}
 }

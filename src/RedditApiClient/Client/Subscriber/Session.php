@@ -20,5 +20,17 @@ class Session implements EventSubscriberInterface
 
 	public function onRequestAfterSend(Event $event)
 	{
+		$request = $event['request'];
+		if (preg_match('#^/api/login#', $request->getPath())) {
+			$this->updateSession($event['response'], $request->getClient());
+		}
+	}
+
+	private function updateSession($response, $client)
+	{
+		$body = json_decode($response->getBody());
+		if (isset($body->json->data->modhash)) {
+			$client->setModHash($body->json->data->modhash);
+		}
 	}
 }

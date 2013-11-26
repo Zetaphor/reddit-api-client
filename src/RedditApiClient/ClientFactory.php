@@ -54,7 +54,8 @@ class ClientFactory
 		} else {
 			$sessionStorage = new Session\Storage\Memory;
 		}
-		$sessionSubscriber = new Session\Subscriber($sessionStorage);
+		$username = isset($config['user']) ? $config['user'] : null;
+		$sessionSubscriber = new Session\Subscriber($sessionStorage, $username);
 		$client->addSubscriber($sessionSubscriber);
 	}
 }

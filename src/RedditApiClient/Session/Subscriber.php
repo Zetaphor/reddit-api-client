@@ -29,7 +29,6 @@ class Subscriber implements EventSubscriberInterface
 		$request = $event['request'];
 		if (isset($this->username)) {
 			$session = $this->storage->retrieveSession($this->username);
-			var_dump($session);
 			if ($session instanceof Session) {
 				$request->addCookie('reddit_session', $session->getCookie());
 			}

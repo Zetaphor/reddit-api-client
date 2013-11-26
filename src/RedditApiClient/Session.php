@@ -6,7 +6,7 @@ class Session
 	private $username;
 	private $modhash;
 
-	public function __construct($username, $session)
+	public function __construct($username, $modhash)
 	{
 		$this->username = $username;
 		$this->modhash = $modhash;

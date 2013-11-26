@@ -34,5 +34,37 @@
       "summary": "Retrieve information about logged-in user"
     }
 
+    "Register": {
+      "httpMethod": "POST",
+      "uri": "api/register",
+      "summary": "Register a new user account",
+      "parameters": {
+        "user": {
+          "location": "query",
+          "description": "The username to register",
+          "required": true,
+          "type": "string"
+        },
+        "email": {
+          "location": "query",
+          "description": "The user's email address",
+          "required": true,
+          "type": "string"
+        },
+        "passwd": {
+          "location": "query",
+          "description": "The user's password",
+          "required": true,
+          "type": "string"
+        },
+        "passwd2": {
+          "location": "query",
+          "description": "The user's password, again. Must match 'passwd'",
+          "required": true,
+          "type": "string"
+        }
+      }
+    }
+
   }
 }

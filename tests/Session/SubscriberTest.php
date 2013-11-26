@@ -8,6 +8,7 @@ use RedditApiClient\Session;
 
 class SubscriberTest extends PHPUnit_Framework_TestCase
 {
+	private $storage;
 	private $session;
 	private $event;
 	private $request;
@@ -16,7 +17,9 @@ class SubscriberTest extends PHPUnit_Framework_TestCase
 	public function setUp()
 	{
 		parent::setUp();
-		$this->session = new Session\Subscriber;
+		$this->storage = m::mock('RedditApiClient\Session\Storage');
+		$this->subscriber = new Session\Subscriber($this->storage, 'example');
+		$this->session = new Session('example', 'swordfish');
 		$this->event = new Event;
 		$this->request = m::mock('Guzzle\Http\Message\Request');
 		$this->response = m::mock('Guzzle\Http\Message\Response');
@@ -30,7 +33,11 @@ class SubscriberTest extends PHPUnit_Framework_TestCase
 	 */
 	public function onRequestBeforeSend()
 	{
-		$this->session->setModHash('asdf');
+		$this->storage
+			->shouldReceive('retrieveSession')
+			->with('example')
+			->andReturn($this->session)
+			->once();
 
 		$this->request
 			->shouldReceive('getParams')
@@ -39,10 +46,10 @@ class SubscriberTest extends PHPUnit_Framework_TestCase
 
 		$this->params
 			->shouldReceive('set')
-			->with('uh', 'asdf')
+			->with('uh', 'swordfish')
 			->once();
 
-		$this->session->onRequestBeforeSend($this->event);
+		$this->subscriber->onRequestBeforeSend($this->event);
 	}
 
 	/**
@@ -69,8 +76,10 @@ class SubscriberTest extends PHPUnit_Framework_TestCase
 			')
 			->once();
 
-		$this->session->onRequestAfterSend($this->event);
+		$this->storage
+			->shouldReceive('storeSession')
+			->once();
 
-		$this->assertEquals('e17aznbup819e98e407734a18ef5a38e4b808dcd3c307ae919', $this->session->getModHash());
+		$this->subscriber->onRequestAfterSend($this->event);
 	}
 }

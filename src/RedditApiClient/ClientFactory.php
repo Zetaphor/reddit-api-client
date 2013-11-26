@@ -49,7 +49,7 @@ class ClientFactory
 
 	private function injectSessionSubscriber($client)
 	{
-		$sessionSubscriber = new Session\Subscriber;
+		$sessionSubscriber = new Session\Subscriber(new Session\Storage\Memory);
 		$client->addSubscriber($sessionSubscriber);
 	}
 }

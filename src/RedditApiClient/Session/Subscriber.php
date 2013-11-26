@@ -2,20 +2,18 @@
 namespace RedditApiClient\Session;
 
 use Guzzle\Common\Event;
+use RedditApiClient\Session;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class Subscriber implements EventSubscriberInterface
 {
-	private $modhash;
+	private $storage;
+	private $usernam;
 
-	public function setModHash($modHash)
+	public function __construct(Session\Storage $storage, $username = null)
 	{
-		$this->modHash = $modHash;
-	}
-
-	public function getModHash()
-	{
-		return $this->modHash;
+		$this->storage = $storage;
+		$this->username = $username;
 	}
 
 	public static function getSubscribedEvents()
@@ -29,26 +27,33 @@ class Subscriber implements EventSubscriberInterface
 	public function onRequestBeforeSend(Event $event)
 	{
 		$request = $event['request'];
-
-		if (isset($this->modHash)) {
-			$params = $request->getParams();
-			$params->set('uh', $this->modHash);
+		if (isset($this->username)) {
+			$session = $this->storage->retrieveSession($this->username);
+			if ($session instanceof Session) {
+				$params = $request->getParams();
+				$params->set('uh', $session->getModhash());
+			}
 		}
 	}
 
 	public function onRequestAfterSend(Event $event)
 	{
 		$request = $event['request'];
-		if (preg_match('#^/api/login#', $request->getPath())) {
-			$this->updateSession($event['response']);
+		if (preg_match('#^/api/login/([^?]+)#', $request->getPath(), $matches)) {
+			$username = $matches[1];
+			$this->updateSession($username, $event['response']);
 		}
 	}
 
-	private function updateSession($response)
+	private function updateSession($username, $response)
 	{
 		$body = json_decode($response->getBody());
 		if ($this->isSuccessfulLogin($body)) {
-			$this->modHash = $body->json->data->modhash;
+			$session = new Session(
+				$username,
+				$body->json->data->modhash
+			);
+			$this->storage->storeSession($session);
 		}
 	}
 

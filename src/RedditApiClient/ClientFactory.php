@@ -21,7 +21,7 @@ class ClientFactory
 		$config = $this->createConfig($config);
 		$client = new Client($config->get('base_url'), $config);
 		$this->injectDescription($client);
-		$this->injectSessionSubscriber($client);
+		$this->injectSessionSubscriber($client, $config);
 		return $client;
 	}
 
@@ -47,9 +47,14 @@ class ClientFactory
 		return $description;
 	}
 
-	private function injectSessionSubscriber($client)
+	private function injectSessionSubscriber($client, $config)
 	{
-		$sessionSubscriber = new Session\Subscriber(new Session\Storage\Memory);
+		if (isset($config['session.storage']) && $config['session.storage'] instanceof Session\Storage) {
+			$sessionStorage = $config['session.storage'];
+		} else {
+			$sessionStorage = new Session\Storage\Memory;
+		}
+		$sessionSubscriber = new Session\Subscriber($sessionStorage);
 		$client->addSubscriber($sessionSubscriber);
 	}
 }

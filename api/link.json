@@ -15,6 +15,20 @@
       }
     },
 
+    "GetLinksBySubreddit": {
+      "httpMethod": "GET",
+      "uri": "r/{subreddit}.json",
+      "summary": "Load a subreddit's links",
+      "responseClass": "Reddit\\Api\\Response\\Handler",
+      "parameters": {
+        "subreddit": {
+          "location": "uri",
+          "description": "The subreddit to load",
+          "required": true
+        }
+      }
+    },
+
     "Submit": {
       "httpMethod": "POST",
       "uri": "/api/submit",

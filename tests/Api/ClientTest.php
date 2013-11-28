@@ -7,19 +7,19 @@ use Reddit\Api\Client;
 
 class ClientTest extends PHPUnit_Framework_TestCase
 {
-	private $client;
+    private $client;
 
-	public function setUp()
-	{
-		parent::setUp();
-		$this->client = new Client;
-	}
+    public function setUp()
+    {
+        parent::setUp();
+        $this->client = new Client;
+    }
 
-	/**
-	 * @test
-	 */
-	public function isGuzzleClient()
-	{
-		$this->assertTrue($this->client instanceof GuzzleClient);
-	}
+    /**
+     * @test
+     */
+    public function isGuzzleClient()
+    {
+        $this->assertTrue($this->client instanceof GuzzleClient);
+    }
 }

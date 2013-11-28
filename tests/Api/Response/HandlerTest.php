@@ -8,81 +8,81 @@ use Reddit\Thing;
 
 class HandlerTest extends PHPUnit_Framework_TestCase
 {
-	private $command;
-	private $response;
-	private $factory;
+    private $command;
+    private $response;
+    private $factory;
 
-	public function setUp()
-	{
-		$this->response = m::mock('Guzzle\Http\Message\Response');
-		$this->command = m::mock('Guzzle\Service\Command\OperationCommand');
-		$this->factory = m::mock('Reddit\Api\Response\ThingFactory');
-		Api\Response\Handler::setThingFactory($this->factory);
-	}
+    public function setUp()
+    {
+        $this->response = m::mock('Guzzle\Http\Message\Response');
+        $this->command = m::mock('Guzzle\Service\Command\OperationCommand');
+        $this->factory = m::mock('Reddit\Api\Response\ThingFactory');
+        Api\Response\Handler::setThingFactory($this->factory);
+    }
 
-	/**
-	 * @test
-	 */
-	public function instantiateAccount()
-	{
-		$thing = new Thing\Account;
+    /**
+     * @test
+     */
+    public function instantiateAccount()
+    {
+        $thing = new Thing\Account;
 
-		$this->command
-			->shouldReceive('getResponse')
-			->andReturn($this->response)
-			->once();
+        $this->command
+            ->shouldReceive('getResponse')
+            ->andReturn($this->response)
+            ->once();
 
-		$this->response
-			->shouldReceive('json')
-			->andReturn(array('kind' => 't1'))
-			->once();
+        $this->response
+            ->shouldReceive('json')
+            ->andReturn(array('kind' => 't1'))
+            ->once();
 
-		$this->factory
-			->shouldReceive('createThing')
-			->with(array('kind' => 't1'))
-			->andReturn($thing)
-			->once();
+        $this->factory
+            ->shouldReceive('createThing')
+            ->with(array('kind' => 't1'))
+            ->andReturn($thing)
+            ->once();
 
-		$output = Api\Response\Handler::fromCommand($this->command);
-		$this->assertEquals($thing, $output);
-	}
+        $output = Api\Response\Handler::fromCommand($this->command);
+        $this->assertEquals($thing, $output);
+    }
 
-	/**
-	 * @test
-	 */
-	public function processListing()
-	{
-		$thing = new Thing\Account;
-		$listing = array(
-			'kind' => 'Listing',
-			'data' => array(
-				'children' => array(
-					array(
-						'kind' => 't1',
-						'data' => array(),
-					),
-				),
-			),
-		);
+    /**
+     * @test
+     */
+    public function processListing()
+    {
+        $thing = new Thing\Account;
+        $listing = array(
+            'kind' => 'Listing',
+            'data' => array(
+                'children' => array(
+                    array(
+                        'kind' => 't1',
+                        'data' => array(),
+                    ),
+                ),
+            ),
+        );
 
-		$this->command
-			->shouldReceive('getResponse')
-			->andReturn($this->response)
-			->once();
+        $this->command
+            ->shouldReceive('getResponse')
+            ->andReturn($this->response)
+            ->once();
 
-		$this->response
-			->shouldReceive('json')
-			->andReturn($listing)
-			->once();
+        $this->response
+            ->shouldReceive('json')
+            ->andReturn($listing)
+            ->once();
 
-		$this->factory
-			->shouldReceive('createThing')
-			->with(array('kind' => 't1', 'data' => array()))
-			->andReturn($thing)
-			->once();
+        $this->factory
+            ->shouldReceive('createThing')
+            ->with(array('kind' => 't1', 'data' => array()))
+            ->andReturn($thing)
+            ->once();
 
-		$output = Api\Response\Handler::fromCommand($this->command);
-		$this->assertEquals(array($thing), $output);
-	}
+        $output = Api\Response\Handler::fromCommand($this->command);
+        $this->assertEquals(array($thing), $output);
+    }
 
 }

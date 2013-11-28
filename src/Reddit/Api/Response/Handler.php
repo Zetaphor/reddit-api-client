@@ -7,38 +7,38 @@ use Reddit\Api\Response\ThingFactory;
 
 class Handler implements ResponseClassInterface
 {
-	private static $thingFactory;
+    private static $thingFactory;
 
-	public static function setThingFactory($thingFactory)
-	{
-		self::$thingFactory = $thingFactory;
-	}
-
-	public static function fromCommand(OperationCommand $command)
+    public static function setThingFactory($thingFactory)
     {
-		$response = $command->getResponse()->json();
-		if (self::isListing($response)) {
-			$things = array();
-			foreach ($response['data']['children'] as $input) {
-				$things[] = self::thingFactory()->createThing($input);
-			}
-			return $things;
-		} else {
-			$thing = self::thingFactory()->createThing($response);
-			return $thing;
-		}
-	}
+        self::$thingFactory = $thingFactory;
+    }
 
-	private static function isListing($response)
-	{
-		return isset($response['kind']) && $response['kind'] === 'Listing';
-	}
+    public static function fromCommand(OperationCommand $command)
+    {
+        $response = $command->getResponse()->json();
+        if (self::isListing($response)) {
+            $things = array();
+            foreach ($response['data']['children'] as $input) {
+                $things[] = self::thingFactory()->createThing($input);
+            }
+            return $things;
+        } else {
+            $thing = self::thingFactory()->createThing($response);
+            return $thing;
+        }
+    }
 
-	private static function thingFactory()
-	{
-		if (!isset(self::$thingFactory)) {
-			self::$thingFactory = new ThingFactory;
-		}
-		return self::$thingFactory;
-	}
+    private static function isListing($response)
+    {
+        return isset($response['kind']) && $response['kind'] === 'Listing';
+    }
+
+    private static function thingFactory()
+    {
+        if (!isset(self::$thingFactory)) {
+            self::$thingFactory = new ThingFactory;
+        }
+        return self::$thingFactory;
+    }
 }

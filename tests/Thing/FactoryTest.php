@@ -116,4 +116,19 @@ class FactoryTest extends PHPUnit_Framework_TestCase
 		$thing = $this->factory->createThing($input);
 		$this->assertTrue($thing instanceof Thing\PromoCampaign);
 	}
+
+	/**
+	 * @test
+	 */
+	public function hydrateThing()
+	{
+		$input = array(
+			'kind' => 't3',
+			'data' => array(
+				'title' => 'Moscow Subway is...fascinating',
+			),
+		);
+		$thing = $this->factory->createThing($input);
+		$this->assertEquals('Moscow Subway is...fascinating', $thing->title);
+	}
 }

@@ -13,14 +13,21 @@ class Factory
 		't5' => 'Reddit\Thing\Subreddit',
 		't6' => 'Reddit\Thing\Award',
 		't7' => 'Reddit\Thing\PromoCampaign',
-		'Listing' => 'Reddit\Thing\Link',
 	);
 
 	public function createThing(array $input)
 	{
 		if (isset($this->kindClassMap[$input['kind']])) {
 			$thing = new $this->kindClassMap[$input['kind']];
+			$this->hydrateThing($thing, $input['data']);
 		}
 		return $thing;
+	}
+
+	private function hydrateThing($thing, $properties)
+	{
+		foreach ($properties as $name => $value) {
+			$thing->{$name} = $value;
+		}
 	}
 }

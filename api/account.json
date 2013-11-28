@@ -4,7 +4,7 @@
     "GetAccount": {
       "httpMethod": "GET",
       "uri": "user/{id}/about.json",
-      "summary": "Retrieve information about logged-in user",
+      "summary": "Retrieve information about a user",
       "responseClass": "Reddit\\Api\\Response\\Handler",
       "parameters": {
         "id": {

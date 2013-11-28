@@ -1,6 +1,20 @@
 {
   "operations": {
 
+    "GetLink": {
+      "httpMethod": "GET",
+      "uri": "/by_id/t3_{id}.json",
+      "summary": "Cast a vote on a thing",
+      "responseClass": "Reddit\\Api\\Response\\Handler",
+      "parameters": {
+        "id": {
+          "location": "uri",
+          "description": "The ID of the link to get",
+          "required": true
+        }
+      }
+    },
+
     "Submit": {
       "httpMethod": "POST",
       "uri": "/api/submit",
@@ -52,20 +66,6 @@
         "dir": {
           "location": "body",
           "description": "The vote you are going to cast. Use 1 to vote up, 0 to rescind a vote, or -1 to vote down. Note that previous votes are not additive. If the user previously voted 1, voting -1 will change the vote to -1, not 0. Accepted values: -1 (downvote), 0 (neutral-vote), 1 (upvote) ",
-          "required": true
-        }
-      }
-    },
-
-    "GetLink": {
-      "httpMethod": "GET",
-      "uri": "/by_id/t3_{id}.json",
-      "summary": "Cast a vote on a thing",
-      "responseClass": "Reddit\\Api\\Response\\Handler",
-      "parameters": {
-        "id": {
-          "location": "uri",
-          "description": "The ID of the link to get",
           "required": true
         }
       }

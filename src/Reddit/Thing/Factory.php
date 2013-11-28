@@ -13,6 +13,7 @@ class Factory
 		't5' => 'Reddit\Thing\Subreddit',
 		't6' => 'Reddit\Thing\Award',
 		't7' => 'Reddit\Thing\PromoCampaign',
+		'Listing' => 'Reddit\Thing\Link',
 	);
 
 	public function createThing(array $input)

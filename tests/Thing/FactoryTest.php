@@ -55,6 +55,19 @@ class FactoryTest extends PHPUnit_Framework_TestCase
 	/**
 	 * @test
 	 */
+	public function createLinkWhenKindIsListing()
+	{
+		$input = array(
+			'kind' => 'Listing',
+			'data' => array(),
+		);
+		$thing = $this->factory->createThing($input);
+		$this->assertTrue($thing instanceof Thing\Link);
+	}
+
+	/**
+	 * @test
+	 */
 	public function createMessage()
 	{
 		$input = array(

@@ -55,6 +55,20 @@
           "required": true
         }
       }
+    },
+
+    "GetLink": {
+      "httpMethod": "GET",
+      "uri": "/by_id/t3_{id}.json",
+      "summary": "Cast a vote on a thing",
+      "responseClass": "Reddit\\Api\\Response\\Handler",
+      "parameters": {
+        "id": {
+          "location": "uri",
+          "description": "The ID of the link to get",
+          "required": true
+        }
+      }
     }
 
   }

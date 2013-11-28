@@ -15,6 +15,21 @@
       }
     },
 
+
+    "GetAccountContributions": {
+      "httpMethod": "GET",
+      "uri": "user/{id}.json",
+      "summary": "Load a user's posted links and comments",
+      "responseClass": "Reddit\\Api\\Response\\Handler",
+      "parameters": {
+        "id": {
+          "location": "uri",
+          "description": "The ID of the user",
+          "required": true
+        }
+      }
+    },
+
     "Login": {
       "httpMethod": "POST",
       "uri": "api/login/{user}",

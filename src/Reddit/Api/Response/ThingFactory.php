@@ -1,9 +1,9 @@
 <?php
-namespace Reddit\Thing;
+namespace Reddit\Api\Response;
 
 use Reddit\Thing;
 
-class Factory
+class ThingFactory
 {
 	private $kindClassMap = array(
 		't1' => 'Reddit\Thing\Comment',

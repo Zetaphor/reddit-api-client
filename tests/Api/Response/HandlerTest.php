@@ -16,7 +16,7 @@ class HandlerTest extends PHPUnit_Framework_TestCase
 	{
 		$this->response = m::mock('Guzzle\Http\Message\Response');
 		$this->command = m::mock('Guzzle\Service\Command\OperationCommand');
-		$this->factory = m::mock('Reddit\Thing\Factory');
+		$this->factory = m::mock('Reddit\Api\Response\ThingFactory');
 		Api\Response\Handler::setThingFactory($this->factory);
 	}
 

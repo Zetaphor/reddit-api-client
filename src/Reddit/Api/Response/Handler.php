@@ -3,7 +3,7 @@ namespace Reddit\Api\Response;
 
 use Guzzle\Service\Command\ResponseClassInterface;
 use Guzzle\Service\Command\OperationCommand;
-use Reddit\Thing;
+use Reddit\Api\Response\ThingFactory;
 
 class Handler implements ResponseClassInterface
 {
@@ -37,7 +37,7 @@ class Handler implements ResponseClassInterface
 	private static function thingFactory()
 	{
 		if (!isset(self::$thingFactory)) {
-			self::$thingFactory = new Thing\Factory;
+			self::$thingFactory = new ThingFactory;
 		}
 		return self::$thingFactory;
 	}

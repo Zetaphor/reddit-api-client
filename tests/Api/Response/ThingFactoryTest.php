@@ -1,16 +1,17 @@
 <?php
-namespace Reddit\Test\Thing;
+namespace Reddit\Test\Api\Response;
 
 use PHPUnit_Framework_TestCase;
+use Reddit\Api\Response\ThingFactory;
 use Reddit\Thing;
 
-class FactoryTest extends PHPUnit_Framework_TestCase
+class ThingFactoryTest extends PHPUnit_Framework_TestCase
 {
 	private $factory;
 
 	public function setUp()
 	{
-		$this->factory = new Thing\Factory;
+		$this->factory = new ThingFactory;
 	}
 
 	/**

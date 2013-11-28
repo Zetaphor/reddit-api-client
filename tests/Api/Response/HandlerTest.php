@@ -47,4 +47,42 @@ class HandlerTest extends PHPUnit_Framework_TestCase
 		$this->assertEquals($thing, $output);
 	}
 
+	/**
+	 * @test
+	 */
+	public function processListing()
+	{
+		$thing = new Thing\Account;
+		$listing = array(
+			'kind' => 'Listing',
+			'data' => array(
+				'children' => array(
+					array(
+						'kind' => 't1',
+						'data' => array(),
+					),
+				),
+			),
+		);
+
+		$this->command
+			->shouldReceive('getResponse')
+			->andReturn($this->response)
+			->once();
+
+		$this->response
+			->shouldReceive('json')
+			->andReturn($listing)
+			->once();
+
+		$this->factory
+			->shouldReceive('createThing')
+			->with(array('kind' => 't1', 'data' => array()))
+			->andReturn($thing)
+			->once();
+
+		$output = Api\Response\Handler::fromCommand($this->command);
+		$this->assertEquals(array($thing), $output);
+	}
+
 }

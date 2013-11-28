@@ -17,8 +17,21 @@ class Handler implements ResponseClassInterface
 	public static function fromCommand(OperationCommand $command)
     {
 		$response = $command->getResponse()->json();
-		$thing = self::thingFactory()->createThing($response);
-		return $thing;
+		if (self::isListing($response)) {
+			$things = array();
+			foreach ($response['data']['children'] as $input) {
+				$things[] = self::thingFactory()->createThing($input);
+			}
+			return $things;
+		} else {
+			$thing = self::thingFactory()->createThing($response);
+			return $thing;
+		}
+	}
+
+	private static function isListing($response)
+	{
+		return isset($response['kind']) && $response['kind'] === 'Listing';
 	}
 
 	private static function thingFactory()

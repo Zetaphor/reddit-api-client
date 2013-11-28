@@ -1,6 +1,20 @@
 {
   "operations": {
 
+    "GetAccount": {
+      "httpMethod": "GET",
+      "uri": "user/{id}/about.json",
+      "summary": "Retrieve information about logged-in user",
+      "responseClass": "Reddit\\Api\\Response\\Handler",
+      "parameters": {
+        "id": {
+          "location": "uri",
+          "description": "The ID of the user to get",
+          "required": true
+        }
+      }
+    },
+
     "Login": {
       "httpMethod": "POST",
       "uri": "api/login/{user}",

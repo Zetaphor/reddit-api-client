@@ -3,7 +3,7 @@
     "base_url": "http://reddit.com",
 
     "includes": [
-      "story.json",
-      "user.json"
+      "account.json",
+      "link.json"
     ]
 }

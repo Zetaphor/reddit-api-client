@@ -1,10 +1,10 @@
 <?php
-namespace Reddit\Test\Session;
+namespace Reddit\Test\Api\Session;
 
 use Guzzle\Common\Event;
 use Mockery as m;
 use PHPUnit_Framework_TestCase;
-use Reddit\Session;
+use Reddit\Api\Session;
 
 class SubscriberTest extends PHPUnit_Framework_TestCase
 {
@@ -17,7 +17,7 @@ class SubscriberTest extends PHPUnit_Framework_TestCase
 	public function setUp()
 	{
 		parent::setUp();
-		$this->storage = m::mock('Reddit\Session\Storage');
+		$this->storage = m::mock('Reddit\Api\Session\Storage');
 		$this->subscriber = new Session\Subscriber($this->storage, 'example');
 		$this->session = new Session('example', 'swordfish', 'poiu');
 		$this->event = new Event;

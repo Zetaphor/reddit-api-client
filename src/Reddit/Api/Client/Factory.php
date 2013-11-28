@@ -4,7 +4,6 @@ namespace Reddit\Api\Client;
 use Guzzle\Common\Collection;
 use Guzzle\Service\Description\ServiceDescription;
 use Reddit\Api;
-use Reddit\Session;
 
 class Factory
 {
@@ -52,10 +51,10 @@ class Factory
 		if (isset($config['session.storage']) && $config['session.storage'] instanceof Session\Storage) {
 			$sessionStorage = $config['session.storage'];
 		} else {
-			$sessionStorage = new Session\Storage\Memory;
+			$sessionStorage = new Api\Session\Storage\Memory;
 		}
 		$username = isset($config['user']) ? $config['user'] : null;
-		$sessionSubscriber = new Session\Subscriber($sessionStorage, $username);
+		$sessionSubscriber = new Api\Session\Subscriber($sessionStorage, $username);
 		$client->addSubscriber($sessionSubscriber);
 	}
 }

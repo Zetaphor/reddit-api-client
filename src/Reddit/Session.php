@@ -1,5 +1,5 @@
 <?php
-namespace RedditApiClient;
+namespace Reddit;
 
 class Session
 {

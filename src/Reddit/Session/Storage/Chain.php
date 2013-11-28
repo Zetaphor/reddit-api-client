@@ -1,7 +1,7 @@
 <?php
-namespace RedditApiClient\Session\Storage;
+namespace Reddit\Session\Storage;
 
-use RedditApiClient\Session;
+use Reddit\Session;
 
 class Chain implements Session\Storage
 {

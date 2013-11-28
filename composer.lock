@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "7548cf7576585e37acf014c1dd63d221",
+    "hash": "28ad5beebf6200b23c170eb21656e984",
     "packages": [
         {
             "name": "guzzle/guzzle",
@@ -159,12 +159,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "23ca1a274fb8fd175101574ac81cd1b82f3d0489"
+                "reference": "fd9f745e335f8a0e68ef34f44f0560a54e44ef84"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/23ca1a274fb8fd175101574ac81cd1b82f3d0489",
-                "reference": "23ca1a274fb8fd175101574ac81cd1b82f3d0489",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/fd9f745e335f8a0e68ef34f44f0560a54e44ef84",
+                "reference": "fd9f745e335f8a0e68ef34f44f0560a54e44ef84",
                 "shasum": ""
             },
             "require": {
@@ -205,7 +205,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2013-11-12 11:09:16"
+            "time": "2013-11-26 20:36:44"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -576,16 +576,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "1.4.7",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "df764a1604607ea61c4eeea5410666e27cb37a8b"
+                "reference": "0191c4f193a62915227ac7946b1600c82cc3c253"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/df764a1604607ea61c4eeea5410666e27cb37a8b",
-                "reference": "df764a1604607ea61c4eeea5410666e27cb37a8b",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/0191c4f193a62915227ac7946b1600c82cc3c253",
+                "reference": "0191c4f193a62915227ac7946b1600c82cc3c253",
                 "shasum": ""
             },
             "require": {
@@ -605,7 +605,6 @@
                     "CodeSniffer/CLI.php",
                     "CodeSniffer/Exception.php",
                     "CodeSniffer/File.php",
-                    "CodeSniffer/MultiFileSniff.php",
                     "CodeSniffer/Report.php",
                     "CodeSniffer/Reporting.php",
                     "CodeSniffer/Sniff.php",
@@ -643,7 +642,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2013-09-26 00:08:21"
+            "time": "2013-11-27 22:22:42"
         },
         {
             "name": "symfony/yaml",

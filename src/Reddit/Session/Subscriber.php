@@ -1,8 +1,8 @@
 <?php
-namespace RedditApiClient\Session;
+namespace Reddit\Session;
 
 use Guzzle\Common\Event;
-use RedditApiClient\Session;
+use Reddit\Session;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class Subscriber implements EventSubscriberInterface

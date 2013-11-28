@@ -1,7 +1,7 @@
 <?php
-namespace RedditApiClient\Session;
+namespace Reddit\Session;
 
-use RedditApiClient\Session;
+use Reddit\Session;
 
 interface Storage
 {

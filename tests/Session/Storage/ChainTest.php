@@ -1,9 +1,9 @@
 <?php
-namespace RedditApiClient\Test\Session\Storage;
+namespace Reddit\Test\Session\Storage;
 
 use Mockery as m;
 use PHPUnit_Framework_TestCase;
-use RedditApiClient\Session;
+use Reddit\Session;
 
 class ChainTest extends PHPUnit_Framework_TestCase
 {
@@ -16,8 +16,8 @@ class ChainTest extends PHPUnit_Framework_TestCase
 	{
 		parent::setUp();
 		$this->session = new Session('exampleuser', 'swordfish', 'poiu');
-		$this->firstImplementation = m::mock('RedditApiClient\Session\Storage');
-		$this->secondImplementation = m::mock('RedditApiClient\Session\Storage');
+		$this->firstImplementation = m::mock('Reddit\Session\Storage');
+		$this->secondImplementation = m::mock('Reddit\Session\Storage');
 		$this->chain = new Session\Storage\Chain(
 			array(
 				$this->firstImplementation,

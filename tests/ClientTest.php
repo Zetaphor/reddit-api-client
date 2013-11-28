@@ -1,9 +1,9 @@
 <?php
-namespace RedditApiClient\Test;
+namespace Reddit\Test;
 
 use Guzzle\Service\Client as GuzzleClient;
 use PHPUnit_Framework_TestCase;
-use RedditApiClient\Client;
+use Reddit\Client;
 
 class ClientTest extends PHPUnit_Framework_TestCase
 {

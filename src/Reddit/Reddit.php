@@ -1,6 +1,5 @@
 <?php
-
-namespace RedditApiClient;
+namespace Reddit;
 
 /**
  * Reddit

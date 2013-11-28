@@ -1,8 +1,8 @@
 <?php
-namespace RedditApiClient\Session\Storage;
+namespace Reddit\Session\Storage;
 
 use Countable;
-use RedditApiClient\Session;
+use Reddit\Session;
 
 class Memory implements Session\Storage, Countable
 {

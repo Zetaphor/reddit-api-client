@@ -1,10 +1,10 @@
 <?php
-namespace RedditApiClient;
+namespace Reddit;
 
 use Guzzle\Common\Collection;
 use Guzzle\Service\Description\ServiceDescription;
-use RedditApiClient\Client;
-use RedditApiClient\Session;
+use Reddit\Client;
+use Reddit\Session;
 
 class ClientFactory
 {

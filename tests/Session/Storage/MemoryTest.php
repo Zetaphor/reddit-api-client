@@ -1,9 +1,9 @@
 <?php
-namespace RedditApiClient\Test\Session\Storage;
+namespace Reddit\Test\Session\Storage;
 
 use Mockery as m;
 use PHPUnit_Framework_TestCase;
-use RedditApiClient\Session;
+use Reddit\Session;
 
 class MemoryTest extends PHPUnit_Framework_TestCase
 {

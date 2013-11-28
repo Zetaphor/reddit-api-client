@@ -31,7 +31,8 @@
     "Me": {
       "httpMethod": "GET",
       "uri": "api/me.json",
-      "summary": "Retrieve information about logged-in user"
+      "summary": "Retrieve information about logged-in user",
+        "responseClass": "Reddit\\Api\\Response\\Handler"
     },
 
     "Register": {

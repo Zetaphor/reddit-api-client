@@ -10,15 +10,14 @@ class HandlerTest extends PHPUnit_Framework_TestCase
 {
 	private $command;
 	private $response;
-	private $json;
+	private $factory;
 
 	public function setUp()
 	{
-		$this->json = array();
-		$this->command = m::mock('Guzzle\Service\Command\OperationCommand');
 		$this->response = m::mock('Guzzle\Http\Message\Response');
-		$this->command->shouldReceive('getResponse')->andReturn($this->response);
-		$this->response->shouldReceive('json')->andReturn($this->json);
+		$this->command = m::mock('Guzzle\Service\Command\OperationCommand');
+		$this->factory = m::mock('Reddit\Thing\Factory');
+		Api\Response\Handler::setThingFactory($this->factory);
 	}
 
 	/**
@@ -26,8 +25,26 @@ class HandlerTest extends PHPUnit_Framework_TestCase
 	 */
 	public function instantiateAccount()
 	{
-		$account = Api\Response\Handler::fromCommand($this->command);
-		$this->assertTrue($account instanceof Thing\Account);
+		$thing = new Thing\Account;
+
+		$this->command
+			->shouldReceive('getResponse')
+			->andReturn($this->response)
+			->once();
+
+		$this->response
+			->shouldReceive('json')
+			->andReturn(array('kind' => 't1'))
+			->once();
+
+		$this->factory
+			->shouldReceive('createThing')
+			->with(array('kind' => 't1'))
+			->andReturn($thing)
+			->once();
+
+		$output = Api\Response\Handler::fromCommand($this->command);
+		$this->assertEquals($thing, $output);
 	}
 
 }

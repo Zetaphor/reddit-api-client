@@ -39,4 +39,3 @@ class Disk implements Session\Storage
         );
     }
 }
-

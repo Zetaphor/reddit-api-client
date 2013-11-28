@@ -64,4 +64,3 @@ class Subscriber implements EventSubscriberInterface
         return isset($body->json->data->modhash);
     }
 }
-

@@ -59,4 +59,3 @@ class ChainTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->session, $session);
     }
 }
-

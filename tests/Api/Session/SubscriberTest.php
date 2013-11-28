@@ -64,22 +64,23 @@ class SubscriberTest extends PHPUnit_Framework_TestCase
 
         $this->response
             ->shouldReceive('getBody')
-            ->andReturn('{
-                "json":  {
-                    "errors":  [],
+            ->andReturn(
+                '{
+                    "json":  {
+                        "errors":  [],
                         "data":  {
                             "modhash": "e17aznbup819e98e407734a18ef5a38e4b808dcd3c307ae919",
-                                "cookie": "23636817,2013-11-25T16:21:14,2ab7f75beab690d42276b3d747d587c7a2bc0e27"
-    }
-    }
-    }
-    ')
-        ->once();
+                            "cookie": "23636817,2013-11-25T16:21:14,2ab7f75beab690d42276b3d747d587c7a2bc0e27"
+                        }
+                    }
+                }'
+            )
+            ->once();
 
-    $this->storage
-        ->shouldReceive('storeSession')
-        ->once();
+        $this->storage
+            ->shouldReceive('storeSession')
+            ->once();
 
-    $this->subscriber->onRequestAfterSend($this->event);
+        $this->subscriber->onRequestAfterSend($this->event);
     }
 }

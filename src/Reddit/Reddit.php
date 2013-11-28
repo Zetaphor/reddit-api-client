@@ -249,7 +249,7 @@ class Reddit
      * @param  integer $limit         [optional] Maximum number of links
      * @return array
      */
-    public function getLinksBySubreddit($subredditName, $limit=25)
+    public function getLinksBySubreddit($subredditName, $limit = 25)
     {
         $verb = 'GET';
         $url = "http://www.reddit.com/r/{$subredditName}.json?limit={$limit}";
@@ -554,8 +554,8 @@ class Reddit
             '.error.RATELIMIT.field-ratelimit',
             'you aren\'t allowed to post there.',
             'that reddit doesn\'t exist',
-			'care to try these again?',
-			'a url is required',
+            'care to try these again?',
+            'a url is required',
         );
 
         foreach ($response['jquery'] as $element) {

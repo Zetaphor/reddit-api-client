@@ -29,4 +29,3 @@ class Chain implements Session\Storage
         }
     }
 }
-

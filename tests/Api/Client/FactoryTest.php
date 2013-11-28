@@ -1,19 +1,18 @@
 <?php
-namespace Reddit\Test;
+namespace Reddit\Test\Api\Client;
 
 use Guzzle\Service\Description\ServiceDescription;
 use PHPUnit_Framework_TestCase;
-use Reddit\Client;
-use Reddit\ClientFactory;
+use Reddit\Api;
 
-class ClientFactoryTest extends PHPUnit_Framework_TestCase
+class FactoryTest extends PHPUnit_Framework_TestCase
 {
 	private $factory;
 
 	public function setUp()
 	{
 		parent::setUp();
-		$this->factory = new ClientFactory;
+		$this->factory = new Api\Client\Factory;
 	}
 
 	/**
@@ -22,7 +21,7 @@ class ClientFactoryTest extends PHPUnit_Framework_TestCase
 	public function createsClient()
 	{
 		$client = $this->factory->createClient();
-		$this->assertTrue($client instanceof Client);
+		$this->assertTrue($client instanceof Api\Client);
 	}
 
 	/**

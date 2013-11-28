@@ -1,5 +1,5 @@
 <?php
-namespace Reddit;
+namespace Reddit\Api;
 
 use Guzzle\Service\Client as GuzzleClient;
 

@@ -1,12 +1,12 @@
 <?php
-namespace Reddit;
+namespace Reddit\Api\Client;
 
 use Guzzle\Common\Collection;
 use Guzzle\Service\Description\ServiceDescription;
-use Reddit\Client;
+use Reddit\Api;
 use Reddit\Session;
 
-class ClientFactory
+class Factory
 {
 	private $defaultConfigOptions = array(
 		'base_url' => 'http://www.reddit.com/',
@@ -19,7 +19,7 @@ class ClientFactory
 	public function createClient(array $config = array())
 	{
 		$config = $this->createConfig($config);
-		$client = new Client($config->get('base_url'), $config);
+		$client = new Api\Client($config->get('base_url'), $config);
 		$this->injectDescription($client);
 		$this->injectSessionSubscriber($client, $config);
 		return $client;
@@ -42,7 +42,7 @@ class ClientFactory
 
 	private function createDescription()
 	{
-		$descriptionPath = realpath(__DIR__ . '/../../api/index.json');
+		$descriptionPath = realpath(__DIR__ . '/../../../../api/index.json');
 		$description = ServiceDescription::factory($descriptionPath);
 		return $description;
 	}

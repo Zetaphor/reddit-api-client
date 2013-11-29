@@ -4,8 +4,8 @@ Reddit API Client
 [![Build Status](https://secure.travis-ci.org/h2s/reddit-api-client.png)](http://travis-ci.org/h2s/reddit-api-client)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/h2s/reddit-api-client/badges/quality-score.png?s=7f14544827eccb99214c30e2f71904b527941a96)](https://scrutinizer-ci.com/g/h2s/reddit-api-client/)
 
-This is a PHP Reddit API client.
-
+This is a PHP client for [Reddit's API](http://www.reddit.com/dev/api), built on
+the [Guzzle web service client framework](http://docs.guzzlephp.org/en/latest/).
 
 As a quick taster, here's some sample code:
 
@@ -13,16 +13,29 @@ As a quick taster, here's some sample code:
 <?php
 require 'vendor/autoload.php';
 
-$clientFactory = new RedditApiClient\ClientFactory;
+$clientFactory = new Reddit\Api\Client\Factory;
 $client = $clientFactory->createClient();
 
-$login = $client->getCommand('Login', array(
-    'api_type' => 'json',
-    'user'     => 'Example_User',
-    'passwd'   => 'password123',
-));
+$login = $client->getCommand(
+    'Login',
+    array(
+        'api_type' => 'json',
+        'user'     => 'Example_User',
+        'passwd'   => 'password123',
+    )
+);
+$login->execute();
 
-$response = $login->execute();
+$submit = $client->getCommand(
+    'Submit',
+    array(
+        'sr'    => 'programming',
+        'kind'  => 'link',
+        'title' => 'Mongo DB Is Web Scale',
+        'url'   => 'http://www.youtube.com/watch?v=b2F-DItXtZs',
+    )
+);
+$submit->execute();
 ```
 
 Installation

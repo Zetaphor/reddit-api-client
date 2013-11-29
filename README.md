@@ -53,41 +53,51 @@ Console](https://github.com/h2s/reddit-console)" project for reference purposes.
 Development Status
 ------------------
 
-This library exposes the majority of the functionality of the API.
+Reddit's API is big, and the service description JSON in the
+[`./api/`](https://github.com/h2s/reddit-api-client/tree/master/api) directory
+is incomplete.
 
-Anything to do with 'flair' isn't supported, but I can't see much demand for
-that functionality anyway, so I can't find the motivation to actully implement
-it.
+#### Supported URIs
 
-Submitting self-posts isn't working yet, which is the only important missing
-feature left that I know of. I will remove this paragraph as soon as this is
-resolved.
+* `api/login/{user}`
+* `api/me.json`
+* `api/register`
+* `api/submit`
+* `api/vote`
+* `by_id/t3_{id}.json`
+* `r/{subreddit}.json`
+* `user/{id}.json`
+* `user/{id}/about.json`
 
-Pull requests are welcome by the way!
+The above list covers many of the most common interactions such as logging in,
+reading and posting links and comments, and casting votes. However, there are
+dozens more services available in Reddit's API, and simple pull requests adding
+entries to the service description JSON are very welcome.
 
 Contributing
 ------------
 
 This is a fairly simple project so there aren't many guidelines. I've you've
-fixed a bug or added a feature let's get it merged back in. There are only two
-rules:
+fixed a bug or added a feature, let's get it merged back in. There are two hard
+rules.
 
-#### 1. Run the tests
+#### 1. Test-drive your changes
 
-    $ ./vendor/bin/phpunit
+This project is test-driven. Please don't submit any code changes without a
+corresponding set of unit tests.
 
-Please make sure the tests pass before submitting a pull request. Ideally, your
-pull request should include one or more new tests for the bug fix or new
-functionality you're introducing.
+```bash
+$ make phpunit
+```
 
-#### 2. Follow the PSR-2 style guide
+#### 2. Follow PSR2
 
-    $ ./vendor/bin/phpcs --standard=PSR2 src/
+Stick to the [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
+standard.
 
-This project complies with the
-[PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
-standard. Your pull request is probably already within these guidelines but it's
-good to double check.
+```bash
+$ make phpcs
+```
 
 License
 -------

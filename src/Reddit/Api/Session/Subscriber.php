@@ -8,7 +8,7 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 class Subscriber implements EventSubscriberInterface
 {
     private $storage;
-    private $usernam;
+    private $username;
 
     public function __construct(Session\Storage $storage, $username = null)
     {

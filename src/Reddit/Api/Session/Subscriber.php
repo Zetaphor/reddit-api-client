@@ -31,6 +31,7 @@ class Subscriber implements EventSubscriberInterface
             $session = $this->storage->retrieveSession($this->username);
             if ($session instanceof Session) {
                 $request->addCookie('reddit_session', $session->getCookie());
+                $request->setHeader('X-Modhash', $session->getModhash());
             }
         }
     }

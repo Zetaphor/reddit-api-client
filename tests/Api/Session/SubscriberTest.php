@@ -44,6 +44,11 @@ class SubscriberTest extends PHPUnit_Framework_TestCase
             ->with('reddit_session', 'poiu')
             ->once();
 
+        $this->request
+            ->shouldReceive('setHeader')
+            ->with('X-Modhash', 'swordfish')
+            ->once();
+
         $this->subscriber->onRequestBeforeSend($this->event);
     }
 

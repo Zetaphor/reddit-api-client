@@ -1,8 +1,8 @@
 Reddit API Client
 =================
 
-[![Build Status](https://secure.travis-ci.org/h2s/reddit-api-client.png)](http://travis-ci.org/h2s/reddit-api-client)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/h2s/reddit-api-client/badges/quality-score.png?s=7f14544827eccb99214c30e2f71904b527941a96)](https://scrutinizer-ci.com/g/h2s/reddit-api-client/)
+[![Build Status](https://secure.travis-ci.org/urael/reddit-api-client.png)](http://travis-ci.org/urael/reddit-api-client)
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/urael/reddit-api-client/badges/quality-score.png?s=7f14544827eccb99214c30e2f71904b527941a96)](https://scrutinizer-ci.com/g/urael/reddit-api-client/)
 
 This is a PHP client for [Reddit's API](http://www.reddit.com/dev/api), built on
 the [Guzzle web service client framework](http://docs.guzzlephp.org/en/latest/).
@@ -44,17 +44,17 @@ Installation
 This project is packaged with [Composer](http://getcomposer.org/). Add the
 following the the `require` section of your project's `composer.json`:
 
-    "h2s/reddit-api-client": "dev-master"
+    "urael/reddit-api-client": "dev-master"
 
 After that just run `php composer.phar update` and you're good to go! If you
 have any trouble, or want more detail, I've set up a working example "[Reddit
-Console](https://github.com/h2s/reddit-console)" project for reference purposes.
+Console](https://github.com/urael/reddit-console)" project for reference purposes.
 
 Development Status
 ------------------
 
 Reddit's API is big, and the service description JSON in the
-[`./api/`](https://github.com/h2s/reddit-api-client/tree/master/api) directory
+[`./api/`](https://github.com/urael/reddit-api-client/tree/master/api) directory
 is incomplete.
 
 #### Supported URIs

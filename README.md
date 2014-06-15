@@ -43,7 +43,7 @@ Installation
 This project is packaged with [Composer](http://getcomposer.org/). Add the
 following the the `require` section of your project's `composer.json`:
 
-    "urael/reddit-api-client": "dev-master"
+    "h2s/reddit-api-client": "dev-master"
 
 After that just run `php composer.phar update` and you're good to go! If you
 have any trouble, or want more detail, I've set up a working example "[Reddit

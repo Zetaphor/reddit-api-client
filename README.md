@@ -101,5 +101,6 @@ $ make phpcs
 License
 -------
 
-This project is licensed under the GNU GENERAL PUBLIC LICENSE Version 2.
+This project is released under the [MIT License].
 
+[MIT License]: http://www.opensource.org/licenses/MIT

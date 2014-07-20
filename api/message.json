@@ -20,6 +20,59 @@
       "uri": "/message/unread.json",
       "summary": "Get unread inbox messages",
       "responseClass": "Reddit\\Api\\Response\\Handler"
+    },
+
+    "GetMentions": {
+      "httpMethod": "GET",
+      "uri": "/message/mentions.json",
+      "summary": "Get mentions",
+      "responseClass": "Reddit\\Api\\Response\\Handler"
+    },
+
+    "SendMessage": {
+      "httpMethod": "POST",
+      "uri": "/api/compose",
+      "summary": "Create and send a message to a user",
+      "responseClass": "Reddit\\Api\\Response\\Handler",
+      "parameters": {
+        "api_type": {
+          "location": "query",
+          "description": "Tell the API to return JSON",
+          "required": true,
+          "type": "string",
+          "value": "json"
+        },
+        "iden": {
+          "location": "query",
+          "description": "The identifier of the CAPTCHA challenge",
+          "type": "string",
+          "required": true
+        },
+        "captcha": {
+          "location": "query",
+          "description": "The user's response to the CAPTCHA challenge",
+          "type": "string",
+          "required": true
+        },
+        "to": {
+          "location": "query",
+          "description": "The name of an existing user",
+          "type": "string",
+          "required": true
+        },
+        "subject": {
+          "location": "query",
+          "description": "A quick summary of the message",
+          "type": "string",
+          "required": true
+        },
+        "text": {
+          "location": "query",
+          "description": "The full raw markdown text body of the message",
+          "type": "string",
+          "required": true
+        }
+      }
     }
 
   }

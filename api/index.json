@@ -5,6 +5,7 @@
     "includes": [
       "account.json",
       "comment.json",
-      "link.json"
+      "link.json",
+      "message.json"
     ]
 }

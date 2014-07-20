@@ -1,0 +1,19 @@
+{
+  "operations": {
+
+    "GetInbox": {
+      "httpMethod": "GET",
+      "uri": "/message/inbox.json",
+      "summary": "Get inbox messages",
+      "responseClass": "Reddit\\Api\\Response\\Handler"
+    },
+
+    "GetInboxUnread": {
+      "httpMethod": "GET",
+      "uri": "/message/unread.json",
+      "summary": "Get unread inbox messages",
+      "responseClass": "Reddit\\Api\\Response\\Handler"
+    }
+
+  }
+}

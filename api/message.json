@@ -1,14 +1,14 @@
 {
   "operations": {
 
-    "GetInbox": {
+    "GetInboxMessages": {
       "httpMethod": "GET",
       "uri": "/message/inbox.json",
       "summary": "Get inbox messages",
       "responseClass": "Reddit\\Api\\Response\\Handler"
     },
 
-    "GetInboxUnread": {
+    "GetUnreadMessages": {
       "httpMethod": "GET",
       "uri": "/message/unread.json",
       "summary": "Get unread inbox messages",

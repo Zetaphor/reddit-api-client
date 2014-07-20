@@ -8,6 +8,13 @@
       "responseClass": "Reddit\\Api\\Response\\Handler"
     },
 
+    "GetSentMessages": {
+      "httpMethod": "GET",
+      "uri": "/message/sent.json",
+      "summary": "Get sent messages",
+      "responseClass": "Reddit\\Api\\Response\\Handler"
+    },
+
     "GetUnreadMessages": {
       "httpMethod": "GET",
       "uri": "/message/unread.json",

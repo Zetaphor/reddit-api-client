@@ -1,7 +1,7 @@
 Reddit API Client
 =================
 
-[![Build Status](https://secure.travis-ci.org/urael/reddit-api-client.png)](http://travis-ci.org/urael/reddit-api-client)
+[![Build Status](https://secure.travis-ci.org/hnrysmth/reddit-api-client.png)](http://travis-ci.org/hnrysmth/reddit-api-client)
 
 This is a PHP client for [Reddit's API](http://www.reddit.com/dev/api), built on
 the [Guzzle web service client framework](http://docs.guzzlephp.org/en/latest/).
@@ -47,13 +47,13 @@ following the the `require` section of your project's `composer.json`:
 
 After that just run `php composer.phar update` and you're good to go! If you
 have any trouble, or want more detail, I've set up a working example "[Reddit
-Console](https://github.com/urael/reddit-console)" project for reference purposes.
+Console](https://github.com/hnrysmth/reddit-console)" project for reference purposes.
 
 Development Status
 ------------------
 
 Reddit's API is big, and the service description JSON in the
-[`./api/`](https://github.com/urael/reddit-api-client/tree/master/api) directory
+[`./api/`](https://github.com/hnrysmth/reddit-api-client/tree/master/api) directory
 is incomplete.
 
 #### Supported URIs

@@ -119,4 +119,16 @@ class ThingFactoryTest extends PHPUnit_Framework_TestCase
         $thing = $this->factory->createThing($input);
         $this->assertEquals('Moscow Subway is...fascinating', $thing->title);
     }
+
+    /**
+     * @test
+     */
+    public function unknownKindDoesntCauseError()
+    {
+        $input = array(
+            'kind' => 'asdfghjkl',
+            'data' => array(),
+        );
+        $thing = $this->factory->createThing($input);
+    }
 }

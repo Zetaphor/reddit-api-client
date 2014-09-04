@@ -20,8 +20,8 @@ class ThingFactory
         if (isset($this->kindClassMap[$input['kind']])) {
             $thing = new $this->kindClassMap[$input['kind']];
             $this->hydrateThing($thing, $input['data']);
+            return $thing;
         }
-        return $thing;
     }
 
     private function hydrateThing($thing, $properties)

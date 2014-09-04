@@ -1,6 +1,7 @@
 <phpunit
     bootstrap="tests/bootstrap.php"
-    colors="true">
+    colors="true"
+    stopOnError="true">
 
     <testsuites>
         <testsuite name="tests">

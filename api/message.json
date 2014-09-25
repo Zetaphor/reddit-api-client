@@ -73,7 +73,42 @@
           "required": true
         }
       }
-    }
+    },
 
+    "ReadMessage": {
+      "httpMethod": "POST",
+      "uri": "/api/read_message",
+      "summary": "Mark message(s) as read",
+      "responseClass": "Reddit\\Api\\Response\\Handler",
+      "parameters": {
+        "id": {
+          "location": "query",
+          "description": "A comma-separated list of thing fullnames",
+          "type": "string",
+          "required": true
+        },
+        "uh": {
+          "location": "query",
+          "description": "The modhash of the currently logged in user",
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+
+    "ReadAllMessages": {
+      "httpMethod": "POST",
+      "uri": "/api/read_all_messages",
+      "summary": "Marks all messages as read",
+      "responseClass": "Reddit\\Api\\Response\\Handler",
+      "parameters": {
+        "uh": {
+          "location": "query",
+          "description": "The modhash of the currently logged in user",
+          "type": "string",
+          "required": true
+        }
+      }
+    }
   }
 }

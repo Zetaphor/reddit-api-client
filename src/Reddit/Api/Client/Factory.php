@@ -8,7 +8,7 @@ use Reddit\Api;
 class Factory
 {
     private $defaultConfigOptions = array(
-        'base_url' => 'http://www.reddit.com/',
+        'base_url' => 'https://www.reddit.com/',
     );
 
     private $requiredConfigOptions = array(

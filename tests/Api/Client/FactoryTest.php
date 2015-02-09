@@ -51,6 +51,6 @@ class FactoryTest extends PHPUnit_Framework_TestCase
     {
         $client = $this->factory->createClient();
         $config = $client->getConfig();
-        $this->assertEquals('http://www.reddit.com/', $config->get('base_url'));
+        $this->assertEquals('https://www.reddit.com/', $config->get('base_url'));
     }
 }

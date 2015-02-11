@@ -67,6 +67,20 @@
       }
     },
 
+    "Delete": {
+      "httpMethod": "POST",
+      "uri": "/api/del",
+      "summary": "Delete a Link or Comment",
+      "parameters": {
+        "id": {
+          "location": "query",
+          "description": "The fullname of a thing created by the user.",
+          "required": true,
+          "type": "string"
+        }
+      }
+    },
+
     "Vote": {
       "httpMethod": "POST",
       "uri": "/api/vote",

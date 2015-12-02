@@ -1,5 +1,23 @@
 {
   "operations": {
-
+    "SubmitComment": {
+      "httpMethod": "POST",
+      "uri": "/api/comment",
+      "summary": "Submit a new comment",
+      "parameters": {
+        "text": {
+          "location": "query",
+          "description": "The text to submit.",
+          "required": true,
+          "type": "string"
+        },
+        "thing_id": {
+          "location": "query",
+          "description": "Fullname of parent thing (a comment, or a link)",
+          "required": true,
+          "type": "string"
+        }
+      }
+    }
   }
 }

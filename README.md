@@ -64,6 +64,8 @@ is incomplete.
 * `api/submit`
 * `api/del`
 * `api/vote`
+* `api/comment`
+* `api/message`
 * `by_id/t3_{id}.json`
 * `r/{subreddit}.json`
 * `user/{id}.json`

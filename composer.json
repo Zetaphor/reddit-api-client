@@ -1,6 +1,6 @@
 {
 
-  "name": "hnrysmth/reddit-api-client",
+  "name": "zetaphor/reddit-api-client",
   "description": "Provides an interface to the API at reddit.com",
   "keywords": [
     "reddit",
@@ -10,6 +10,10 @@
 
   "license": "GPLv2",
   "authors": [
+    {
+      "name": "Gary Daigle",
+      "email": "zetaphor@gmail.com",
+    },    
     {
       "name": "Henry Smith",
       "email": "henry@henrysmith.org",

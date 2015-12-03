@@ -1,7 +1,7 @@
 Reddit API Client
 =================
 
-[![Build Status](https://secure.travis-ci.org/zetaphor/reddit-api-client.png)](http://travis-ci.org/zetaphor/reddit-api-client)
+[![Build Status](https://travis-ci.org/Zetaphor/reddit-api-client.svg?branch=master)](https://travis-ci.org/Zetaphor/reddit-api-client)
 
 This is a PHP client for [Reddit's API](http://www.reddit.com/dev/api), built on
 the [Guzzle web service client framework](http://docs.guzzlephp.org/en/latest/).

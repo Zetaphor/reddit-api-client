@@ -11,14 +11,14 @@
   "license": "GPLv2",
   "authors": [
     {
-      "name": "Gary Daigle",
-      "email": "zetaphor@gmail.com"
-    },    
-    {
       "name": "Henry Smith",
       "email": "henry@henrysmith.org",
       "homepage": "http://henrysmith.org"
-    }
+    },
+    {
+      "name": "Gary Daigle",
+      "email": "zetaphor@gmail.com"
+    },        
   ],
 
   "autoload": {

@@ -84,7 +84,7 @@ entries to the service description JSON are very welcome.
 Contributing
 ------------
 
-This is a fairly simple project so there aren't many guidelines. I've you've
+This is a fairly simple project so there aren't many guidelines. If you've
 fixed a bug or added a feature, let's get it merged back in. There are two hard
 rules.
 

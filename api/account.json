@@ -25,6 +25,50 @@
           "location": "uri",
           "description": "The ID of the user",
           "required": true
+        },
+        "after": {
+          "location": "query",
+          "description": "fullname of a 'thing'",
+          "required": false
+        },
+        "before": {
+          "location": "query",
+          "description": "fullname of a 'thing'",
+          "required": false
+        },
+        "limit": {
+          "location": "query",
+          "description": "default: 25, maximum: 100",
+          "required": false
+        }
+      }
+    },
+
+    "GetAccountComments": {
+      "httpMethod": "GET",
+      "uri": "user/{id}/comments.json",
+      "summary": "Load a user's comments",
+      "responseClass": "Reddit\\Api\\Response\\Handler",
+      "parameters": {
+        "id": {
+          "location": "uri",
+          "description": "The ID of the user",
+          "required": true
+        },
+        "after": {
+          "location": "query",
+          "description": "fullname of a 'thing'",
+          "required": false
+        },
+        "before": {
+          "location": "query",
+          "description": "fullname of a 'thing'",
+          "required": false
+        },
+        "limit": {
+          "location": "query",
+          "description": "default: 25, maximum: 100",
+          "required": false
         }
       }
     },
@@ -39,6 +83,21 @@
           "location": "uri",
           "description": "The ID of the user",
           "required": true
+        },
+        "after": {
+          "location": "query",
+          "description": "fullname of a 'thing'",
+          "required": false
+        },
+        "before": {
+          "location": "query",
+          "description": "fullname of a 'thing'",
+          "required": false
+        },
+        "limit": {
+          "location": "query",
+          "description": "default: 25, maximum: 100",
+          "required": false
         }
       }
     },
